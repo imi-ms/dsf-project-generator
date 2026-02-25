@@ -12,6 +12,9 @@ import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
 import shared.DsfVersion;
 import utils.NetworkHandler;
+import utils.InputChecker;
+
+import java.io.*;
 
 public class Main {
 
@@ -28,8 +31,11 @@ public class Main {
         organizations.add(hrp);
         organizations.add(cos);
 
-        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO("Test", "imi.ms", DsfVersion.V_2_0_1,
-            organizations, "./output/");
+        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO(InputChecker.checkIfValidProjectName("Test"),
+                InputChecker.checkIfDomainExists("imi.ms"),
+                DsfVersion.V_2_0_1, organizations,
+                "./output/");
+
 
 //        MustacheFactory mf = new DefaultMustacheFactory();
 //        Mustache mustache = mf.compile("template.mustache");
