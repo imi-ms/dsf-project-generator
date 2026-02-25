@@ -1,6 +1,3 @@
-import com.github.mustachejava.DefaultMustacheFactory;
-import com.github.mustachejava.Mustache;
-import com.github.mustachejava.MustacheFactory;
 import shared.DsfOrganizationDTO;
 import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
@@ -9,7 +6,6 @@ import utils.*;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Main {
@@ -68,19 +64,11 @@ public class Main {
 
         FolderGenerator gen = new FolderGenerator();
         gen.generateProjectFiles(dsfProjectDTO);
-
         SecretsGenerator.generateSecrets(dsfProjectDTO);
-
         DockerGenerator.generateDockerFile(dsfProjectDTO);
-
         DbGenerator.generateDb(dsfProjectDTO);
-
         KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
-
         ProxyGenerator.generateProxy(dsfProjectDTO);
-
-
-
-
+        PomGenerator.generatePomFile(dsfProjectDTO);
     }
 }
