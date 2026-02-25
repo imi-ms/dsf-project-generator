@@ -1,19 +1,21 @@
+package de.unimuenster.imi.medic.dsf;
+
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationRole;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfVersion;
+import de.unimuenster.imi.medic.dsf.utils.FolderGenerator;
+import de.unimuenster.imi.medic.dsf.utils.InputChecker;
+import de.unimuenster.imi.medic.dsf.utils.NetworkHandler;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import shared.DsfOrganizationDTO;
-import shared.DsfOrganizationRole;
-import shared.DsfProjectDTO;
-import shared.DsfVersion;
-import utils.FolderGenerator;
-import utils.NetworkHandler;
-import utils.InputChecker;
 
 import java.io.*;
 
@@ -33,8 +35,7 @@ public class Main {
         organizations.add(cos);
 
         DsfProjectDTO dsfProjectDTO = new DsfProjectDTO(InputChecker.checkIfValidProjectName("Test"),
-                InputChecker.checkIfDomainExists("imi.ms"),
-                DsfVersion.V_2_0_1, organizations,
+                InputChecker.checkIfDomainExists("imi.ms"), organizations,
                 "./output/");
 
 
