@@ -3,7 +3,7 @@ package shared;
 import java.io.IOException;
 import java.util.Locale;
 import utils.NetworkHandler;
-import utils.SecretGenerator;
+import utils.PasswordGenerator;
 
 public class DsfOrganizationDTO {
 
@@ -226,7 +226,7 @@ public class DsfOrganizationDTO {
         }
 
         private void generateSecrets() {
-            SecretGenerator secretGenerator = new SecretGenerator();
+            PasswordGenerator secretGenerator = new PasswordGenerator();
             fhirOIDCSecret = secretGenerator.generateSecret();
             bpeOIDCSecret = secretGenerator.generateSecret();
         }

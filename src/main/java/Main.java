@@ -11,6 +11,7 @@ import shared.DsfOrganizationDTO;
 import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
 import shared.DsfVersion;
+import utils.FolderGenerator;
 import utils.NetworkHandler;
 import utils.InputChecker;
 
@@ -51,7 +52,7 @@ public class Main {
         mustache.execute(writer, config);
         writer.flush();
 
-        //FolderGenerator gen = new FolderGenerator();
-        //gen.generateProjectFiles(dsfProjectDTO);
+        FolderGenerator gen = new FolderGenerator();
+        gen.generateProjectFiles(dsfProjectDTO);
     }
 }

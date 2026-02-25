@@ -1,22 +1,19 @@
 package utils;
 
-import static org.passay.CharacterCharacteristicsRule.ERROR_CODE;
-
 import java.util.List;
 import org.passay.CharacterData;
 import org.passay.CharacterRule;
 import org.passay.EnglishCharacterData;
-import org.passay.PasswordGenerator;
 import org.passay.Rule;
 
 /**
  * Generates random secrets to be used in the DSF setup
  */
-public class SecretGenerator {
+public class PasswordGenerator {
 
     private static final Integer SECRET_LENGTH = 24;
 
-    public SecretGenerator() {}
+    public PasswordGenerator() {}
 
     /**
      * Generates a random secret with at least two lowercase,
@@ -25,7 +22,7 @@ public class SecretGenerator {
      * @return random Secret as String
      */
     public String generateSecret() {
-        PasswordGenerator gen = new PasswordGenerator();
+        org.passay.PasswordGenerator gen = new org.passay.PasswordGenerator();
         CharacterData lowerCaseChars = EnglishCharacterData.LowerCase;
         CharacterRule lowerCaseRule = new CharacterRule(lowerCaseChars);
         lowerCaseRule.setNumberOfCharacters(2);
