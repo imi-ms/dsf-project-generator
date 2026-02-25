@@ -1,9 +1,9 @@
 package de.unimuenster.imi.medic.dsf.shared;
 
+import de.unimuenster.imi.medic.dsf.utils.NetworkHandler;
+import de.unimuenster.imi.medic.dsf.utils.PasswordGenerator;
 import java.io.IOException;
 import java.util.Locale;
-import utils.NetworkHandler;
-import utils.PasswordGenerator;
 
 public class DsfOrganizationDTO {
 
@@ -20,6 +20,7 @@ public class DsfOrganizationDTO {
     private Integer bpePort;
     private String bpeFrontendSubnet;
     private String bpeOIDCSecret;
+    private DsfVersion dsfVersion;
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
@@ -35,6 +36,7 @@ public class DsfOrganizationDTO {
         this.bpePort = builder.bpePort;
         this.bpeFrontendSubnet = builder.bpeFrontendSubnet;
         this.bpeOIDCSecret = builder.bpeOIDCSecret;
+        this.dsfVersion = builder.dsfVersion;
     }
 
     public String getNameUC() {
@@ -141,6 +143,14 @@ public class DsfOrganizationDTO {
         this.bpeOIDCSecret = bpeOIDCSecret;
     }
 
+    public DsfVersion getDsfVersion() {
+        return dsfVersion;
+    }
+
+    public void setDsfVersion(DsfVersion dsfVersion) {
+        this.dsfVersion = dsfVersion;
+    }
+
     public static class Builder {
 
         private String name;
@@ -156,6 +166,7 @@ public class DsfOrganizationDTO {
         private Integer bpePort;
         private String bpeFrontendSubnet;
         private String bpeOIDCSecret;
+        private DsfVersion dsfVersion;
 
 
         public Builder name(String name) {
@@ -222,6 +233,11 @@ public class DsfOrganizationDTO {
         public Builder generateValidSettings(NetworkHandler networkHandler) throws IOException {
             generateSecrets();
             setValidNetworkSettings(networkHandler);
+            return this;
+        }
+
+        public Builder dsfVersion(DsfVersion version) {
+            this.dsfVersion = version;
             return this;
         }
 
