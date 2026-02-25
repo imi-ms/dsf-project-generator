@@ -1,4 +1,4 @@
-package shared;
+package de.unimuenster.imi.medic.dsf.shared;
 
 public enum DsfVersion {
     V_2_0_1;

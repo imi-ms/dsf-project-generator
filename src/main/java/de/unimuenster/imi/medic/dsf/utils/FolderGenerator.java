@@ -1,7 +1,7 @@
-package utils;
+package de.unimuenster.imi.medic.dsf.utils;
 
-import shared.DsfOrganizationDTO;
-import shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import java.io.File;
 import java.util.List;
 

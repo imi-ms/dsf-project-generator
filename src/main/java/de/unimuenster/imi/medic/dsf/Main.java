@@ -1,11 +1,13 @@
+package de.unimuenster.imi.medic.dsf;
+
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import shared.DsfOrganizationDTO;
-import shared.DsfOrganizationRole;
-import shared.DsfProjectDTO;
-import shared.DsfVersion;
-import utils.FolderGenerator;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationRole;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfVersion;
+import de.unimuenster.imi.medic.dsf.utils.FolderGenerator;
 
 import java.io.*;
 import java.util.ArrayList;
