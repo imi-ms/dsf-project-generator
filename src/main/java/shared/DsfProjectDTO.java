@@ -9,7 +9,11 @@ public class DsfProjectDTO {
     private List<DsfOrganizationDTO> organizations;
     private String outputPath;
 
-    public DsfProjectDTO(String projectName, String projectOrganization, DsfVersion version, List<DsfOrganizationDTO> organizations, String outputPath) {
+    public DsfProjectDTO(String projectName,
+                         String projectOrganization,
+                         DsfVersion version,
+                         List<DsfOrganizationDTO> organizations,
+                         String outputPath) {
         this.projectName = projectName;
         this.projectOrganization = projectOrganization;
         this.dsfVersion = version.getVersion();
@@ -48,4 +52,14 @@ public class DsfProjectDTO {
     public void setOutputPath(String outputPath) {
         this.outputPath = outputPath;
     }
+
+    public String getDomain() {
+        return this.projectOrganization.substring(0, projectOrganization.lastIndexOf(".")).replaceAll("-","_");
+    }
+
+    public String getDomainName() {
+        return this.projectOrganization.substring(projectOrganization.lastIndexOf(".") + 1,
+                projectOrganization.length());
+    }
+
 }

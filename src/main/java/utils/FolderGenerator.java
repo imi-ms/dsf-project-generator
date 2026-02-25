@@ -69,8 +69,42 @@ public class FolderGenerator {
             }
 
             // 2.5) Create process folder
+            File processFolder = this.createFolder(projectFolder, this.generateProcessFolderName(dsfProjectDTO));
+            File processSrcFolder = this.createFolder(processFolder, "src");
+
+            // 2.5.1) Create main folder
+            File processSrcMainFolder = this.createFolder(processSrcFolder, "main");
+            String packageFolder = "java" + File.separator + dsfProjectDTO.getDomainName() + File.separator +
+                    dsfProjectDTO.getDomain() + File.separator + "process" + File.separator +
+                    dsfProjectDTO.getProjectName().replace("-process", "");
+            File processSrcJavaFolder = this.createFolders(processSrcMainFolder, packageFolder);
+            List<String> processFolders = List.of("message", "service", "spring/config");
+            for (String process : processFolders) {
+                this.createFolders(processSrcJavaFolder, process);
+            }
+
+            // 2.5.2) Create resource folder
+            File resourceMainFolder = this.createFolder(processSrcMainFolder, "resources");
+            File resourceConfigFolder = this.createFolders(resourceMainFolder, "META-INF/services");
+            File resourceBpeFolder = this.createFolder(resourceMainFolder, "bpe");
+            File resourceFhirFolder = this.createFolder(resourceMainFolder, "fhir");
+            List<String> fhirResourceFolders = List.of("ActivityDefinition", "CodeSystem", "StructureDefinition",
+                    "Task", "ValueSet");
+            for (String fhirResourceFolder : fhirResourceFolders) {
+                this.createFolders(resourceFhirFolder, fhirResourceFolder);
+            }
+            File resourceTemplateFolder = this.createFolder(resourceMainFolder, "template");
+
+            // 2.5.3) Create test folder
+            File processTestFolder = this.createFolder(processFolder, "test");
+            File processTestJavaFolders = this.createFolders(processTestFolder, packageFolder);
+            File processTestResourcesFolder = this.createFolder(processTestFolder, "resources");
             return true;
         } catch (Exception e) {
+            File projectFolder = new File(dsfProjectDTO.getOutputPath());
+            if (projectFolder.exists()) {
+                projectFolder.delete();
+            }
             return  false;
         }
     }
@@ -81,9 +115,20 @@ public class FolderGenerator {
         return newDirectory;
     }
 
+    private File createFolders(File directory, String folders) throws Exception {
+        File newDirectories = new File(directory + File.separator, folders);
+        if (!newDirectories.mkdirs()) throw new Exception("Folders could not be created.");
+        return newDirectories;
+    }
+
     private void addGitKeep(File directory) throws Exception {
         String GITKEEP = ".gitkeep";
         File directoryKeep = new File(directory + File.separator, GITKEEP);
         if (!directoryKeep.createNewFile()) throw new Exception("GitKeep could not be created.");
+    }
+
+    private String generateProcessFolderName(DsfProjectDTO dsfProjectDTO) {
+        if (dsfProjectDTO.getProjectName().contains("-process")) return dsfProjectDTO.getProjectName();
+        return dsfProjectDTO.getProjectName() + "-process";
     }
 }

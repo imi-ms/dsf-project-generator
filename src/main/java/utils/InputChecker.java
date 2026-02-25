@@ -1,0 +1,24 @@
+package utils;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.regex.Pattern;
+
+public class InputChecker {
+
+    public static String checkIfDomainExists(String projectOrganization) {
+        try {
+            InetAddress.getByName(projectOrganization);
+            return projectOrganization.toLowerCase();
+        } catch (UnknownHostException e) {
+            return "dsf.dev";
+        }
+    }
+
+    public static String checkIfValidProjectName(String projectName) {
+        if (Pattern.matches("[a-zA-Z-]+", projectName)) {
+            return projectName.toLowerCase();
+        }
+        return projectName.replaceAll("[^a-zA-Z-]", "").toLowerCase();
+    }
+}
