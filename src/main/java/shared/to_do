@@ -1,2 +1,3 @@
 -> validate Strings: only . - _ are allowed as signs
 -> validate Strings: valid domain name is necessary
+-> dsf-process-tutorial/tutorial-process/src/main/resources/plugin.properties -> publisher email -> DSFProjectDTO

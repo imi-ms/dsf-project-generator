@@ -21,7 +21,7 @@ public class PasswordGenerator {
      * Secret length is static and defined by const SECRET_LENGTH
      * @return random Secret as String
      */
-    public String generateSecret() {
+    public String generateSecret(Integer length) {
         org.passay.PasswordGenerator gen = new org.passay.PasswordGenerator();
         CharacterData lowerCaseChars = EnglishCharacterData.LowerCase;
         CharacterRule lowerCaseRule = new CharacterRule(lowerCaseChars);
@@ -38,6 +38,10 @@ public class PasswordGenerator {
         List<Rule> rules = List.of(lowerCaseRule, upperCaseRule, digitRule);
 
         return gen.generatePassword(SECRET_LENGTH, rules);
+    }
+
+    public String generateSecret() {
+        return generateSecret(SECRET_LENGTH);
     }
 
 
