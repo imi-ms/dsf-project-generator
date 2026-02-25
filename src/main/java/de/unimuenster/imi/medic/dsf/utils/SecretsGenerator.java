@@ -1,9 +1,8 @@
-package utils;
+package de.unimuenster.imi.medic.dsf.utils;
 
-import shared.DsfProjectDTO;
 
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import java.io.File;
-import java.io.IOException;
 
 public class SecretsGenerator {
 

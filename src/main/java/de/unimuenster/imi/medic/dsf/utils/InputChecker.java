@@ -1,4 +1,4 @@
-package utils;
+package de.unimuenster.imi.medic.dsf.utils;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
