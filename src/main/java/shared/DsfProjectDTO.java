@@ -62,4 +62,9 @@ public class DsfProjectDTO {
                 projectOrganization.length());
     }
 
+    public String getProcessFolderName() {
+        if (projectName.contains("-process")) return projectName;
+        return projectName + "-process";
+    }
+
 }
