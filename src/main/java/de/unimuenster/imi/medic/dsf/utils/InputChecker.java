@@ -21,4 +21,8 @@ public class InputChecker {
         }
         return projectName.replaceAll("[^a-zA-Z-]", "").toLowerCase();
     }
+
+    public static String checkIfValidOrganizationName(String organizationName) {
+        return organizationName.replaceAll("[^a-zA-Z-.]", "").toLowerCase();
+    }
 }

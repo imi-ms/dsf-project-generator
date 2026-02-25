@@ -9,6 +9,7 @@ public class DsfOrganizationDTO {
 
     private String name;
     private String nameUC;
+    private String namespace;
     private DsfOrganizationRole role;
     private String fhirIp;
     private String fhirProxyPassIp;
@@ -24,7 +25,8 @@ public class DsfOrganizationDTO {
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
-        this.nameUC = builder.nameUC;
+        this.setNameUC();
+        this.setNamespace();
         this.role = builder.role;
         this.fhirIp = builder.fhirIp;
         this.fhirProxyPassIp = builder.fhirProxyPassIp;
@@ -43,8 +45,8 @@ public class DsfOrganizationDTO {
         return nameUC;
     }
 
-    public void setNameUC(String nameUC) {
-        this.nameUC = nameUC;
+    private void setNameUC() {
+        this.nameUC = this.name.toUpperCase(Locale.ENGLISH);
     }
 
     public String getName() {
@@ -53,6 +55,16 @@ public class DsfOrganizationDTO {
 
     public void setName(String name) {
         this.name = name;
+        this.setNameUC();
+        this.setNamespace();
+    }
+
+    private void setNamespace() {
+        this.namespace = this.name.replaceAll("-", "_").toLowerCase();
+    }
+
+    public String getNamespace() {
+        return this.namespace;
     }
 
     public DsfOrganizationRole getRole() {
@@ -171,7 +183,6 @@ public class DsfOrganizationDTO {
 
         public Builder name(String name) {
             this.name = name;
-            this.nameUC = name.toUpperCase(Locale.ENGLISH);
             return this;
         }
 
