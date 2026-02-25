@@ -69,7 +69,7 @@ public class FolderGenerator {
             }
 
             // 2.5) Create process folder
-            File processFolder = this.createFolder(projectFolder, this.generateProcessFolderName(dsfProjectDTO));
+            File processFolder = this.createFolder(projectFolder, dsfProjectDTO.getProcessFolderName());
             File processSrcFolder = this.createFolder(processFolder, "src");
 
             // 2.5.1) Create main folder
@@ -127,8 +127,4 @@ public class FolderGenerator {
         if (!directoryKeep.createNewFile()) throw new Exception("GitKeep could not be created.");
     }
 
-    private String generateProcessFolderName(DsfProjectDTO dsfProjectDTO) {
-        if (dsfProjectDTO.getProjectName().contains("-process")) return dsfProjectDTO.getProjectName();
-        return dsfProjectDTO.getProjectName() + "-process";
-    }
 }
