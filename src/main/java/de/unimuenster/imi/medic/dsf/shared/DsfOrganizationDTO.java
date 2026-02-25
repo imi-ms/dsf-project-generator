@@ -1,6 +1,9 @@
 package de.unimuenster.imi.medic.dsf.shared;
 
+import java.io.IOException;
 import java.util.Locale;
+import utils.NetworkHandler;
+import utils.PasswordGenerator;
 
 public class DsfOrganizationDTO {
 
@@ -11,11 +14,12 @@ public class DsfOrganizationDTO {
     private String fhirProxyPassIp;
     private Integer fhirPort;
     private String fhirFrontendSubnet;
+    private String fhirOIDCSecret;
     private String bpeIp;
     private String bpeProxyPassIp;
     private Integer bpePort;
     private String bpeFrontendSubnet;
-    //TODO: Add secrets OIDC
+    private String bpeOIDCSecret;
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
@@ -25,11 +29,12 @@ public class DsfOrganizationDTO {
         this.fhirProxyPassIp = builder.fhirProxyPassIp;
         this.fhirPort = builder.fhirPort;
         this.fhirFrontendSubnet = builder.fhirFrontendSubnet;
+        this.fhirOIDCSecret = builder.fhirOIDCSecret;
         this.bpeIp = builder.bpeIp;
         this.bpeProxyPassIp = builder.bpeProxyPassIp;
         this.bpePort = builder.bpePort;
         this.bpeFrontendSubnet = builder.bpeFrontendSubnet;
-
+        this.bpeOIDCSecret = builder.bpeOIDCSecret;
     }
 
     public String getNameUC() {
@@ -38,75 +43,6 @@ public class DsfOrganizationDTO {
 
     public void setNameUC(String nameUC) {
         this.nameUC = nameUC;
-    }
-
-    public static class Builder {
-        private String name;
-        private String nameUC;
-        private DsfOrganizationRole role;
-        private String fhirIp;
-        private String fhirProxyPassIp;
-        private Integer fhirPort;
-        private String fhirFrontendSubnet;
-        private String bpeIp;
-        private String bpeProxyPassIp;
-        private Integer bpePort;
-        private String bpeFrontendSubnet;
-
-        public Builder name(String name) {
-            this.name = name;
-            this.nameUC = name.toUpperCase(Locale.ENGLISH);
-            return this;
-        }
-
-        public Builder role(DsfOrganizationRole role) {
-            this.role = role;
-            return this;
-        }
-
-        public Builder fhirIp(String fhirIp) {
-            this.fhirIp = fhirIp;
-            return this;
-        }
-
-        public Builder fhirProxyPassIp(String fhirProxyPassIp) {
-            this.fhirProxyPassIp = fhirProxyPassIp;
-            return this;
-        }
-
-        public Builder fhirPort(Integer fhirPort) {
-            this.fhirPort = fhirPort;
-            return this;
-        }
-
-        public Builder fhirFrontendSubnet(String fhirFrontendSubnet) {
-            this.fhirFrontendSubnet = fhirFrontendSubnet;
-            return this;
-        }
-
-        public Builder bpeIp(String bpeIp) {
-            this.bpeIp = bpeIp;
-            return this;
-        }
-
-        public Builder bpeProxyPassIp(String bpeProxyPassIp) {
-            this.bpeProxyPassIp = bpeProxyPassIp;
-            return this;
-        }
-
-        public Builder bpePort(Integer bpePort) {
-            this.bpePort = bpePort;
-            return this;
-        }
-
-        public Builder bpeFrontendSubnet(String bpeFrontendSubnet) {
-            this.bpeFrontendSubnet = bpeFrontendSubnet;
-            return this;
-        }
-
-        public DsfOrganizationDTO build() {
-            return new DsfOrganizationDTO(this);
-        }
     }
 
     public String getName() {
@@ -187,5 +123,130 @@ public class DsfOrganizationDTO {
 
     public void setBpeFrontendSubnet(String bpeFrontendSubnet) {
         this.bpeFrontendSubnet = bpeFrontendSubnet;
+    }
+
+    public String getFhirOIDCSecret() {
+        return fhirOIDCSecret;
+    }
+
+    public void setFhirOIDCSecret(String fhirOIDCSecret) {
+        this.fhirOIDCSecret = fhirOIDCSecret;
+    }
+
+    public String getBpeOIDCSecret() {
+        return bpeOIDCSecret;
+    }
+
+    public void setBpeOIDCSecret(String bpeOIDCSecret) {
+        this.bpeOIDCSecret = bpeOIDCSecret;
+    }
+
+    public static class Builder {
+
+        private String name;
+        private String nameUC;
+        private DsfOrganizationRole role;
+        private String fhirIp;
+        private String fhirProxyPassIp;
+        private Integer fhirPort;
+        private String fhirFrontendSubnet;
+        private String fhirOIDCSecret;
+        private String bpeIp;
+        private String bpeProxyPassIp;
+        private Integer bpePort;
+        private String bpeFrontendSubnet;
+        private String bpeOIDCSecret;
+
+
+        public Builder name(String name) {
+            this.name = name;
+            this.nameUC = name.toUpperCase(Locale.ENGLISH);
+            return this;
+        }
+
+        public Builder role(DsfOrganizationRole role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder fhirIp(String fhirIp) {
+            this.fhirIp = fhirIp;
+            return this;
+        }
+
+        public Builder fhirProxyPassIp(String fhirProxyPassIp) {
+            this.fhirProxyPassIp = fhirProxyPassIp;
+            return this;
+        }
+
+        public Builder fhirPort(Integer fhirPort) {
+            this.fhirPort = fhirPort;
+            return this;
+        }
+
+        public Builder fhirFrontendSubnet(String fhirFrontendSubnet) {
+            this.fhirFrontendSubnet = fhirFrontendSubnet;
+            return this;
+        }
+
+        public Builder fhirOIDCSecret(String fhirOIDCSecret) {
+            this.fhirOIDCSecret = fhirOIDCSecret;
+            return this;
+        }
+
+        public Builder bpeIp(String bpeIp) {
+            this.bpeIp = bpeIp;
+            return this;
+        }
+
+        public Builder bpeProxyPassIp(String bpeProxyPassIp) {
+            this.bpeProxyPassIp = bpeProxyPassIp;
+            return this;
+        }
+
+        public Builder bpePort(Integer bpePort) {
+            this.bpePort = bpePort;
+            return this;
+        }
+
+        public Builder bpeFrontendSubnet(String bpeFrontendSubnet) {
+            this.bpeFrontendSubnet = bpeFrontendSubnet;
+            return this;
+        }
+
+        public Builder bpeOIDCSecret(String bpeOIDCSecret) {
+            this.bpeOIDCSecret = bpeOIDCSecret;
+            return this;
+        }
+
+        public Builder generateValidSettings(NetworkHandler networkHandler) throws IOException {
+            generateSecrets();
+            setValidNetworkSettings(networkHandler);
+            return this;
+        }
+
+        private void generateSecrets() {
+            PasswordGenerator secretGenerator = new PasswordGenerator();
+            fhirOIDCSecret = secretGenerator.generateSecret();
+            bpeOIDCSecret = secretGenerator.generateSecret();
+        }
+
+        private void setValidNetworkSettings(NetworkHandler networkHandler) throws IOException {
+            fhirIp = networkHandler.getAndRemoveValidIp();
+            bpeIp = networkHandler.getAndRemoveValidIp();
+            fhirProxyPassIp = networkHandler.getAndRemoveValidIp();
+            bpeProxyPassIp = networkHandler.getAndRemoveValidIp();
+
+            fhirFrontendSubnet = networkHandler.getAndRemoveValidIp() + "/28";
+            bpeFrontendSubnet = networkHandler.getAndRemoveValidIp() + "/28";
+
+            fhirPort = networkHandler.findFreePortInRange();
+            bpePort = networkHandler.findFreePortInRange();
+        }
+
+
+        public DsfOrganizationDTO build() {
+            return new DsfOrganizationDTO(this);
+        }
     }
 }
