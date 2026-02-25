@@ -1,13 +1,12 @@
-package de.unimuenster.imi.medic.dsf;
-
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
-import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationRole;
-import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
-import de.unimuenster.imi.medic.dsf.shared.DsfVersion;
-import de.unimuenster.imi.medic.dsf.utils.FolderGenerator;
+import shared.DsfOrganizationDTO;
+import shared.DsfOrganizationRole;
+import shared.DsfProjectDTO;
+import shared.DsfVersion;
+import utils.FolderGenerator;
+import utils.InputChecker;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -58,7 +57,10 @@ public class Main {
         organizations.add(hrp);
         organizations.add(cos);
 
-        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO("Test", "imi.ms", DsfVersion.V_2_0_1, organizations, "./output/");
+        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO(InputChecker.checkIfValidProjectName("Test"),
+                InputChecker.checkIfDomainExists("imi.ms"),
+                DsfVersion.V_2_0_1, organizations,
+                "./output/");
 
 
 //        MustacheFactory mf = new DefaultMustacheFactory();
