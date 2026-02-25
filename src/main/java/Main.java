@@ -14,6 +14,7 @@ import shared.DsfVersion;
 import utils.FolderGenerator;
 import utils.NetworkHandler;
 import utils.InputChecker;
+import utils.ProcessGenerator;
 
 import java.io.*;
 
@@ -54,5 +55,8 @@ public class Main {
 
         FolderGenerator gen = new FolderGenerator();
         gen.generateProjectFiles(dsfProjectDTO);
+
+
+        ProcessGenerator.generateProcess(dsfProjectDTO);
     }
 }

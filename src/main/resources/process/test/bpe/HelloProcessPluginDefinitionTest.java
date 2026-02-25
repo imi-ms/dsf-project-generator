@@ -1,4 +1,4 @@
-package dev.dsf.bpe;
+package { packageName };
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -18,11 +18,11 @@ public class HelloProcessPluginDefinitionTest
 		ProcessPluginDefinition definition = new HelloWorldProcessPluginDefinition();
 		Map<String, List<String>> resourcesByProcessId = definition.getFhirResourcesByProcessId();
 
-		var helloWorld = resourcesByProcessId.get("dsfdev_helloWorld");
+		var helloWorld = resourcesByProcessId.get("{ organizationNameConcat }_helloWorld");
 		assertNotNull(helloWorld);
 		assertEquals(5, helloWorld.stream().filter(this::exists).count());
 
-		var helloUser = resourcesByProcessId.get("dsfdev_helloUser");
+		var helloUser = resourcesByProcessId.get("{ organizationNameConcat }_helloUser");
 		assertNotNull(helloUser);
 		assertEquals(4, helloUser.stream().filter(this::exists).count());
 	}
