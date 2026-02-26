@@ -69,6 +69,6 @@ public class Main {
         DbGenerator.generateDb(dsfProjectDTO);
         KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
         ProxyGenerator.generateProxy(dsfProjectDTO);
-        PomGenerator.generatePomFile(dsfProjectDTO);
+        PomGenerator.generatePomFiles(dsfProjectDTO);
     }
 }
