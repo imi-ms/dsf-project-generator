@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="main" fx:id="mainWindow" prefHeight="740.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="main" prefHeight="740.0" prefWidth="833.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="37.0" layoutY="170.0" text="Project Title" />
       <TextField id="projectTitle" layoutX="171.0" layoutY="166.0" prefHeight="26.0" prefWidth="603.0" />

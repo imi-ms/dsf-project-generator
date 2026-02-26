@@ -19,7 +19,7 @@ public class FolderGenerator {
 
             // 1.) Create project directory - if not exists
             File projectFolder = new File(dsfProjectDTO.getOutputPath());
-            if (!projectFolder.mkdirs()) return false;
+            projectFolder.mkdirs();
 
             // 2.) Create main directories
             // 2.1) Create browser-certs

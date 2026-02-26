@@ -30,6 +30,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
@@ -41,6 +42,8 @@ public class App extends Application {
     private static Scene scene;
     private final Set<String> orgaIds = new HashSet<>();
     private final NetworkHandler networkHandler = new NetworkHandler();
+    private final ProjectGenerator projectGenerator = new ProjectGenerator();
+
 
     public static void main(String[] args) {
         launch(args);
@@ -97,14 +100,17 @@ public class App extends Application {
         };
         numberOfOrganizations.setOnAction(adjustOrganizations);
 
-        EventHandler<ActionEvent> run = event -> {
+        EventHandler<ActionEvent> runEvent = event -> {
             try {
-                run();
+                runGeneration();
+                setSuccessToStage();
             } catch (Exception ignore) {
+                System.out.println("Fehler!");
             }
             event.consume();
         };
-        ((Button) scene.lookup("#generateButton")).setOnAction(run);
+        Button generateButton = (Button) scene.lookup("#generateButton");
+        generateButton.setOnAction(runEvent);
 
         EventHandler<ActionEvent> exit = event -> {
             try {
@@ -172,7 +178,7 @@ public class App extends Application {
         }
     }
 
-    private void run() {
+    private void runGeneration() {
         String title = ((TextField) scene.lookup("#projectTitle")).getText();
         String organizationName = ((TextField) scene.lookup("#orgaName")).getText();
         String targetDirectory = ((Label) scene.lookup("#pathLabel")).getText();
@@ -189,9 +195,9 @@ public class App extends Application {
                 organizations,
                 targetDirectory
             );
-            //TODO: Run Generations here
+            projectGenerator.generate(project);
         } catch (Exception e) {
-            //TODO: Handle
+            System.out.println(e.getMessage());
         }
 
 
@@ -201,7 +207,7 @@ public class App extends Application {
         Integer numberOfOrganizations) throws IOException {
         List<DsfOrganizationDTO> organizations = new ArrayList<>();
         for (int i = 0; i < numberOfOrganizations; i++) {
-            String orgaName = ((TextField) scene.lookup("orgaName_" + i)).getText();
+            String orgaName = ((TextField) scene.lookup("#orgaName_" + i)).getText();
             DsfOrganizationRole orgaRole = ((ChoiceBox<DsfOrganizationRole>) scene.lookup(
                 "#orgaRole_" + i)).getValue();
             DsfVersion orgaVersion = ((ChoiceBox<DsfVersion>) scene.lookup(
@@ -224,6 +230,15 @@ public class App extends Application {
         ChoiceBox<Integer> numberOfOrganizations = (ChoiceBox<Integer>) scene.lookup(
             "#numberOfOrganizations");
         return numberOfOrganizations.getValue();
+    }
+
+    private void setSuccessToStage() {
+        AnchorPane anchorPane = (AnchorPane) scene.lookup("#main");
+        anchorPane.getChildren().clear();
+
+        Label successLabel = new Label();
+        successLabel.setText("Success!");
+        anchorPane.getChildren().add(successLabel);
     }
 
 
