@@ -11,9 +11,7 @@ import shared.DsfOrganizationDTO;
 import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
 import shared.DsfVersion;
-import utils.FolderGenerator;
-import utils.NetworkHandler;
-import utils.InputChecker;
+import utils.*;
 
 import java.io.*;
 
@@ -22,11 +20,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         NetworkHandler networkHandler = new NetworkHandler();
         DsfOrganizationDTO dic = new DsfOrganizationDTO.Builder().name("dic")
-            .role(DsfOrganizationRole.DIC).generateValidSettings(networkHandler).build();
+            .role(DsfOrganizationRole.DIC).ipConfig(networkHandler.getAndRemoveValidIp()).build();
         DsfOrganizationDTO hrp = new DsfOrganizationDTO.Builder().name("hrp")
-            .role(DsfOrganizationRole.HRP).generateValidSettings(networkHandler).build();
+            .role(DsfOrganizationRole.HRP).ipConfig(networkHandler.getAndRemoveValidIp()).build();
         DsfOrganizationDTO cos = new DsfOrganizationDTO.Builder().name("cos")
-            .role(DsfOrganizationRole.COS).generateValidSettings(networkHandler).build();
+            .role(DsfOrganizationRole.COS).ipConfig(networkHandler.getAndRemoveValidIp()).build();
         List<DsfOrganizationDTO> organizations = new ArrayList<>();
         organizations.add(dic);
         organizations.add(hrp);
@@ -44,13 +42,12 @@ public class Main {
 
         FolderGenerator gen = new FolderGenerator();
         gen.generateProjectFiles(dsfProjectDTO);
-
-        ProcessGenerator.generateProcess(dsfProjectDTO);
         SecretsGenerator.generateSecrets(dsfProjectDTO);
         DockerGenerator.generateDockerFile(dsfProjectDTO);
         DbGenerator.generateDb(dsfProjectDTO);
         KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
         ProxyGenerator.generateProxy(dsfProjectDTO);
         PomGenerator.generatePomFile(dsfProjectDTO);
+        ProcessGenerator.generateProcess(dsfProjectDTO);
     }
 }

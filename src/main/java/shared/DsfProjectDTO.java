@@ -66,5 +66,4 @@ public class DsfProjectDTO {
         if (this.getProjectName().contains("-process")) return this.getProjectName();
         return this.getProjectName() + "-process";
     }
-
 }
