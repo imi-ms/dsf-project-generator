@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +32,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
@@ -42,7 +43,9 @@ public class App extends Application {
     private static Scene scene;
     private final Set<String> orgaIds = new HashSet<>();
     private final NetworkHandler networkHandler = new NetworkHandler();
-
+    private final List<Character> charArray = IntStream.rangeClosed('a', 'z')
+        .mapToObj(c -> (char) c)
+        .collect(Collectors.toList());
 
     public static void main(String[] args) {
         launch(args);
@@ -134,7 +137,7 @@ public class App extends Application {
             label1.setText("Name:");
 
             TextField tf = new TextField();
-            tf.setText("Organization " + (i + 1));
+            tf.setText("org-" + charArray.get(i));
             tf.setPrefSize(250, 26);
             tf.setId("orgaName_" + i);
 
