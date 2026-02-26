@@ -96,7 +96,7 @@ services:
       --spi-truststore-file-hostname-verification-policy=STRICT
   {{#project.organizations}}
   {{name}}-fhir:
-    image: ghcr.io/datasharingframework/fhir:{{project.dsfVersion}}
+    image: ghcr.io/datasharingframework/fhir:{{dsfVersion}}
     restart: "no"
     ports:
       - 127.0.0.1:{{ipConfig.fhirPort}}:{{ipConfig.fhirPort}}
@@ -170,7 +170,7 @@ services:
       - keycloak
 
   {{name}}-bpe:
-    image: ghcr.io/datasharingframework/bpe:{{project.dsfVersion}}
+    image: ghcr.io/datasharingframework/bpe:{{dsfVersion}}
     restart: "no"
     ports:
       - 127.0.0.1:{{ipConfig.bpePort}}:{{ipConfig.bpePort}}

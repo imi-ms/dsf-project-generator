@@ -7,7 +7,9 @@ import de.unimuenster.imi.medic.dsf.utils.DbGenerator;
 import de.unimuenster.imi.medic.dsf.utils.FolderGenerator;
 import de.unimuenster.imi.medic.dsf.utils.InputChecker;
 import de.unimuenster.imi.medic.dsf.utils.KeycloakGenerator;
+import de.unimuenster.imi.medic.dsf.utils.NetworkHandler;
 import de.unimuenster.imi.medic.dsf.utils.PomGenerator;
+import de.unimuenster.imi.medic.dsf.utils.ProcessGenerator;
 import de.unimuenster.imi.medic.dsf.utils.ProxyGenerator;
 import de.unimuenster.imi.medic.dsf.utils.SecretsGenerator;
 import de.unimuenster.imi.medic.dsf.utils.DockerGenerator;
@@ -48,7 +50,7 @@ public class Main {
         DbGenerator.generateDb(dsfProjectDTO);
         KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
         ProxyGenerator.generateProxy(dsfProjectDTO);
-        PomGenerator.generatePomFile(dsfProjectDTO);
+        PomGenerator.generatePomFiles(dsfProjectDTO);
         ProcessGenerator.generateProcess(dsfProjectDTO);
     }
 }

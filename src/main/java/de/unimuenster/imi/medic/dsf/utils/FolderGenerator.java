@@ -70,7 +70,7 @@ public class FolderGenerator {
 
             // 2.5) Create process folder
             File processFolder = this.createFolder(projectFolder,
-                    dsfProjectDTO.generateProcessFolderName());
+                    dsfProjectDTO.getProcessFolderName());
             File processSrcFolder = this.createFolder(processFolder, "src");
 
             // 2.5.1) Create main folder

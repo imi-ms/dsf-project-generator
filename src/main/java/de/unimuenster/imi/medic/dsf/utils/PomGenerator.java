@@ -25,7 +25,7 @@ public class PomGenerator {
 
     private static boolean generateProcessPomFile(DsfProjectDTO dsfProjectDTO) {
         String templateName = "pom.mustache";
-        String targetPath = dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.generateProcessFolderName() +
+        String targetPath = dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.getProcessFolderName() +
             File.separator + "pom.xml";
 
         return generatePomFile(dsfProjectDTO, templateName, targetPath);

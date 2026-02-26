@@ -137,7 +137,7 @@ public class App extends Application {
             label1.setText("Name:");
 
             TextField tf = new TextField();
-            tf.setText("org-" + charArray.get(i));
+            tf.setText("org" + charArray.get(i));
             tf.setPrefSize(250, 26);
             tf.setId("orgaName_" + i);
 

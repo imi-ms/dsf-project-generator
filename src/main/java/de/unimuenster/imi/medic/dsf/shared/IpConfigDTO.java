@@ -1,4 +1,4 @@
-package shared;
+package de.unimuenster.imi.medic.dsf.shared;
 
 public class IpConfigDTO {
     private final String fhirProxyIp;

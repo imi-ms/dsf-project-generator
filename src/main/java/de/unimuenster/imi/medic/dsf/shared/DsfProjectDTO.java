@@ -11,9 +11,9 @@ public class DsfProjectDTO {
 
     public DsfProjectDTO(String projectName,
         String projectOrganization,
-        DsfVersion version,
         List<DsfOrganizationDTO> organizations,
-        String outputPath) {
+        String outputPath
+    ) {
         this.projectName = projectName;
         this.processFolderName = generateProcessFolderName();
         this.projectOrganization = projectOrganization;
@@ -41,10 +41,6 @@ public class DsfProjectDTO {
         this.organizations.add(organization);
     }
 
-    public String getDsfVersion() {
-        return dsfVersion;
-    }
-
     public String getOutputPath() {
         return outputPath;
     }
@@ -65,5 +61,9 @@ public class DsfProjectDTO {
     public String generateProcessFolderName() {
         if (this.getProjectName().contains("-process")) return this.getProjectName();
         return this.getProjectName() + "-process";
+    }
+
+    public String getProcessFolderName() {
+        return processFolderName;
     }
 }

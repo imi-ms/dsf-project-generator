@@ -26,7 +26,7 @@
       <ChoiceBox id="numberOfOrganizations" layoutX="171.0" layoutY="301.0" prefHeight="26.0" prefWidth="207.0" />
       <ImageView fitHeight="115.0" fitWidth="294.0" layoutX="278.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo.png" />
+            <Image url="@img/logo.png" />
          </image>
       </ImageView>
       <VBox id="orgaBox" alignment="CENTER" layoutX="37.0" layoutY="370.0" prefHeight="304.0" prefWidth="749.0" style="-fx-border-image-width: 1px; -fx-border-style: solid; -fx-border-radius: 5px;">

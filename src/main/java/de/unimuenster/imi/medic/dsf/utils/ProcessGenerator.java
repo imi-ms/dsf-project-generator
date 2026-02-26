@@ -1,10 +1,10 @@
-package utils;
+package de.unimuenster.imi.medic.dsf.utils;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import shared.DsfOrganizationDTO;
-import shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import java.io.File;
 import java.io.StringWriter;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ public class ProcessGenerator {
     public static boolean generateProcess(DsfProjectDTO dsfProjectDTO) {
         try {
             String processBaseFolder = dsfProjectDTO.getOutputPath() + File.separator +
-                    dsfProjectDTO.generateProcessFolderName();
+                    dsfProjectDTO.getProcessFolderName();
             String processBaseFolderProcess = processBaseFolder + File.separator + "src/main";
             String processBaseFolderResources = processBaseFolderProcess + File.separator + "resources";
 

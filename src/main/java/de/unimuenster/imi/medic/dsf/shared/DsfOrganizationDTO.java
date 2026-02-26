@@ -14,7 +14,7 @@ public class DsfOrganizationDTO {
     private String fhirOIDCSecret;
     private String bpeOIDCSecret;
     private IpConfigDTO ipConfig;
-    private DsfVersion dsfVersion;
+    private String dsfVersion;
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
@@ -85,12 +85,12 @@ public class DsfOrganizationDTO {
         this.bpeOIDCSecret = bpeOIDCSecret;
     }
 
-    public DsfVersion getDsfVersion() {
+    public String getDsfVersion() {
         return dsfVersion;
     }
 
     public void setDsfVersion(DsfVersion dsfVersion) {
-        this.dsfVersion = dsfVersion;
+        this.dsfVersion = dsfVersion.getVersion();
     }
 
     public static class Builder {
@@ -101,7 +101,7 @@ public class DsfOrganizationDTO {
         private String fhirOIDCSecret;
         private IpConfigDTO ipConfig;
         private String bpeOIDCSecret;
-        private DsfVersion dsfVersion;
+        private String dsfVersion;
 
 
         public Builder name(String name) {
@@ -131,13 +131,13 @@ public class DsfOrganizationDTO {
         }
 
         public Builder generateValidSettings(NetworkHandler networkHandler) throws IOException {
+            ipConfig(networkHandler.getAndRemoveValidIp());
             generateSecrets();
-            setValidNetworkSettings(networkHandler);
             return this;
         }
 
         public Builder dsfVersion(DsfVersion version) {
-            this.dsfVersion = version;
+            this.dsfVersion = version.getVersion();
             return this;
         }
 
