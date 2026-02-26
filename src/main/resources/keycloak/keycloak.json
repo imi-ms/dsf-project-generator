@@ -223,7 +223,7 @@
         "containerId" : "\{ uuidContainerId }",
         "attributes" : { }
       }, {
-        "id" : "2e06aecf-e645-4feb-9819-1cd6b772380e",
+        "id" : "\{ uuidRealmMgmtNineteen }",
         "name" : "view-events",
         "description" : "${role_view-events}",
         "composite" : false,
@@ -400,7 +400,7 @@
     "lastName" : "Tester",
     "email" : "\{ organizationName }@test.com",
     "credentials" : [ {
-      "id" : "c4eef652-7889-40f3-8ac8-fbd2a7aaee1f",
+      "id" : "\{ uuidCredentialsOne }",
       "type" : "password",
       "userLabel" : "My password",
       "createdDate" : 1678909990946,
@@ -423,7 +423,7 @@
     "lastName" : "Testerson",
     "email" : "tutorial@dsf.dev",
     "credentials" : [ {
-      "id" : "fc9a68a9-41ae-43b6-aff7-aeadbc999eff",
+      "id" : "\{ uuidCredentialsTwo }",
       "type" : "password",
       "userLabel" : "My password",
       "createdDate" : 1711096504736,
@@ -1094,7 +1094,7 @@
       "display.on.consent.screen" : "false"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperThirtysix },
+      "id" : "\{ uuidProtocolMapperThirtysix }",
       "name" : "upn",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",

@@ -20,6 +20,8 @@ public class KeycloakGenerator {
                 String processName = dsfProjectDTO.getProjectName().replace("_", "-");
                 String organizationName = organization.getNamespace().replace("_", "-");
                 String uuidOne = String.valueOf(UUID.randomUUID());
+                String uuidCredentialsOne = String.valueOf(UUID.randomUUID());
+                String uuidCredentialsTwo = String.valueOf(UUID.randomUUID());
                 String uuidRealmOne = String.valueOf(UUID.randomUUID());
                 String uuidRealmTwo = String.valueOf(UUID.randomUUID());
                 String uuidRealmThree = String.valueOf(UUID.randomUUID());
@@ -43,6 +45,7 @@ public class KeycloakGenerator {
                 String uuidRealmMgmtSixteen = String.valueOf(UUID.randomUUID());
                 String uuidRealmMgmtSeventeen = String.valueOf(UUID.randomUUID());
                 String uuidRealmMgmtEighteen = String.valueOf(UUID.randomUUID());
+                String uuidRealmMgmtNineteen = String.valueOf(UUID.randomUUID());
                 String uuidContainerId = String.valueOf(UUID.randomUUID());
                 String uuidBroker = String.valueOf(UUID.randomUUID());
                 String uuidAccountOne = String.valueOf(UUID.randomUUID());
@@ -142,6 +145,8 @@ public class KeycloakGenerator {
                         .replace("\\{ processName }", processName)
                         .replace("\\{ organizationName }", organizationName)
                         .replace("\\{ uuidOne }", uuidOne)
+                        .replace("\\{ uuidCredentialsOne }", uuidCredentialsOne)
+                        .replace("\\{ uuidCredentialsTwo }", uuidCredentialsTwo)
                         .replace("\\{ uuidRealmOne }", uuidRealmOne)
                         .replace("\\{ uuidRealmTwo }", uuidRealmTwo)
                         .replace("\\{ uuidRealmThree }", uuidRealmThree)
@@ -165,6 +170,7 @@ public class KeycloakGenerator {
                         .replace("\\{ uuidRealmMgmtSixteen }", uuidRealmMgmtSixteen)
                         .replace("\\{ uuidRealmMgmtSeventeen }", uuidRealmMgmtSeventeen)
                         .replace("\\{ uuidRealmMgmtEighteen }", uuidRealmMgmtEighteen)
+                        .replace("\\{ uuidRealmMgmtNineteen }", uuidRealmMgmtNineteen)
                         .replace("\\{ uuidContainerId }", uuidContainerId)
                         .replace("\\{ uuidBroker }", uuidBroker)
                         .replace("\\{ uuidAccountOne }", uuidAccountOne)
@@ -260,15 +266,16 @@ public class KeycloakGenerator {
                         .replace("\\{ uuidConfigOne }", uuidConfigOne)
                         .replace("\\{ uuidConfigTwo }", uuidConfigTwo);
 
-                File keycloakOrganizationFile = new File(dsfProjectDTO.getOutputPath() + File.separator +
+                    File keycloakOrganizationFile = new File(dsfProjectDTO.getOutputPath() + File.separator +
                         "dev-setup/keycloak/import/"  + organizationName + ".json");
-                Files.write(keycloakOrganizationFile.toPath(),
+                    Files.write(keycloakOrganizationFile.toPath(),
                         Collections.singleton(keycloakOrganization),
                         StandardCharsets.UTF_8);
             }
 
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
 
