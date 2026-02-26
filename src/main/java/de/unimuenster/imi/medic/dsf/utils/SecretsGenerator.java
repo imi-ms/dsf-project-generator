@@ -1,15 +1,12 @@
 package de.unimuenster.imi.medic.dsf.utils;
 
-import shared.DsfOrganizationDTO;
-import shared.DsfProjectDTO;
 
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

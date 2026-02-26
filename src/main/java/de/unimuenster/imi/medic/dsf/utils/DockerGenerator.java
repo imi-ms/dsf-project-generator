@@ -1,10 +1,10 @@
-package utils;
+package de.unimuenster.imi.medic.dsf.utils;
 
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import shared.DsfProjectDTO;
 
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
