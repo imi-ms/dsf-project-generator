@@ -3,7 +3,6 @@ package de.unimuenster.imi.medic.dsf.shared;
 import java.util.List;
 
 public class DsfProjectDTO {
-
     private final String projectName;
     private final String processFolderName;
     private final String projectOrganization;
@@ -42,6 +41,10 @@ public class DsfProjectDTO {
         this.organizations.add(organization);
     }
 
+    public String getDsfVersion() {
+        return dsfVersion;
+    }
+
     public String getOutputPath() {
         return outputPath;
     }
@@ -51,22 +54,16 @@ public class DsfProjectDTO {
     }
 
     public String getDomain() {
-        return this.projectOrganization.substring(0, projectOrganization.lastIndexOf("."))
-            .replaceAll("-", "_");
+        return this.projectOrganization.substring(0, projectOrganization.lastIndexOf(".")).replaceAll("-","_");
     }
 
     public String getDomainName() {
-        return this.projectOrganization.substring(projectOrganization.lastIndexOf(".") + 1
-        );
+        return this.projectOrganization.substring(projectOrganization.lastIndexOf(".") + 1,
+                projectOrganization.length());
     }
 
     public String generateProcessFolderName() {
         if (this.getProjectName().contains("-process")) return this.getProjectName();
         return this.getProjectName() + "-process";
     }
-
-    public String getProcessFolderName() {
-        return processFolderName;
-    }
-
 }

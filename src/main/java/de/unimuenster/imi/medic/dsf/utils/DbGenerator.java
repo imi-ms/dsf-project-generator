@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.FileAttribute;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
@@ -29,9 +30,13 @@ public class DbGenerator {
                     File.separator + "db" + File.separator + "init-db.sh");
 
             Files.createFile(dbFile.toPath());
-            Files.write(dbFile.toPath(), writer.toString().getBytes(StandardCharsets.UTF_8));
+            String normalized = writer.toString().replace("\r\n", "\n")
+                    .replace("\r", "\n");
+            Files.writeString(dbFile.toPath(), normalized, StandardCharsets.UTF_8, StandardOpenOption.TRUNCATE_EXISTING);
             Set<PosixFilePermission> perms = Files.getPosixFilePermissions(dbFile.toPath());
             perms.add(PosixFilePermission.OWNER_EXECUTE);
+            perms.add(PosixFilePermission.GROUP_EXECUTE);
+            perms.add(PosixFilePermission.OTHERS_EXECUTE);
             Files.setPosixFilePermissions(dbFile.toPath(), perms);
             return true;
         } catch (Exception e) {

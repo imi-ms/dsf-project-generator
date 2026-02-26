@@ -33,7 +33,7 @@ public class FolderGenerator {
             // 2.3) Create dev-setup
             File devSetup = this.createFolder(projectFolder, "dev-setup");
             this.addGitKeep(devSetup);
-            List<String> devFolders = List.of("db", "keycloak", "proxy/conf.d", "secrets");
+            List<String> devFolders = List.of("db", "keycloak/import", "proxy/conf.d", "secrets");
             for (String dev : devFolders) {
                 File devFolder = this.createFolders(devSetup, dev);
                 this.addGitKeep(devFolder);
