@@ -25,16 +25,16 @@ public class PomGenerator {
 
     private static boolean generateProcessPomFile(DsfProjectDTO dsfProjectDTO) {
         String templateName = "pom.mustache";
-        String targetPath = dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.getProcessFolderName() +
+        String targetPath = dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.generateProcessFolderName() +
             File.separator + "pom.xml";
 
         return generatePomFile(dsfProjectDTO, templateName, targetPath);
     }
 
-    private static boolean generatePomFile(
-        DsfProjectDTO dsfProjectDTO,
-        String templateName,
-        String targetPath
+    public static boolean generatePomFile(
+            DsfProjectDTO dsfProjectDTO,
+            String templateName,
+            String targetPath
     ) {
         try {
             HashMap<String, Object> config = new HashMap<>();
