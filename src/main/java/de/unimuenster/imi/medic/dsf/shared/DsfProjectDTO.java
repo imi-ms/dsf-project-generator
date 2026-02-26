@@ -5,13 +5,18 @@ import java.util.List;
 public class DsfProjectDTO {
 
     private final String projectName;
+    private final String processFolderName;
     private final String projectOrganization;
     private List<DsfOrganizationDTO> organizations;
     private String outputPath;
 
-    public DsfProjectDTO(String projectName, String projectOrganization,
-        List<DsfOrganizationDTO> organizations, String outputPath) {
+    public DsfProjectDTO(String projectName,
+        String projectOrganization,
+        DsfVersion version,
+        List<DsfOrganizationDTO> organizations,
+        String outputPath) {
         this.projectName = projectName;
+        this.processFolderName = generateProcessFolderName();
         this.projectOrganization = projectOrganization;
         this.organizations = organizations;
         this.outputPath = outputPath;
@@ -59,4 +64,9 @@ public class DsfProjectDTO {
         if (this.getProjectName().contains("-process")) return this.getProjectName();
         return this.getProjectName() + "-process";
     }
+
+    public String getProcessFolderName() {
+        return processFolderName;
+    }
+
 }
