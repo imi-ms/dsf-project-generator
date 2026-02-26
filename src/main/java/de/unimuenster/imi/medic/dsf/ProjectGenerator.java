@@ -11,7 +11,7 @@ import de.unimuenster.imi.medic.dsf.utils.SecretsGenerator;
 
 public class ProjectGenerator {
 
-    public void generate(DsfProjectDTO projectDTO) {
+    public static void generate(DsfProjectDTO projectDTO) {
         FolderGenerator gen = new FolderGenerator();
         gen.generateProjectFiles(projectDTO);
         SecretsGenerator.generateSecrets(projectDTO);

@@ -42,7 +42,6 @@ public class App extends Application {
     private static Scene scene;
     private final Set<String> orgaIds = new HashSet<>();
     private final NetworkHandler networkHandler = new NetworkHandler();
-    private final ProjectGenerator projectGenerator = new ProjectGenerator();
 
 
     public static void main(String[] args) {
@@ -195,7 +194,7 @@ public class App extends Application {
                 organizations,
                 targetDirectory
             );
-            projectGenerator.generate(project);
+            ProjectGenerator.generate(project);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
