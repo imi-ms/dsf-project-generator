@@ -14,7 +14,6 @@ import shared.DsfVersion;
 import utils.FolderGenerator;
 import utils.NetworkHandler;
 import utils.InputChecker;
-import utils.ProcessGenerator;
 
 import java.io.*;
 
@@ -43,20 +42,15 @@ public class Main {
 //        Mustache mustache = mf.compile("template.mustache");
 //        mustache.execute(new PrintWriter(System.out), new Example()).flush();
 
-        HashMap<String, Object> config = new HashMap<>();
-        config.put("project", dsfProjectDTO);
-
-        Writer writer = new OutputStreamWriter(System.out);
-        MustacheFactory mf = new DefaultMustacheFactory();
-        //Mustache mustache = mf.compile(new StringReader("{{project.projectName}}! {{#project.organizations}}{{name}},{{/project.organizations}}"), "example");
-        Mustache mustache = mf.compile("docker-compose.mustache");
-        mustache.execute(writer, config);
-        writer.flush();
-
         FolderGenerator gen = new FolderGenerator();
         gen.generateProjectFiles(dsfProjectDTO);
 
-
         ProcessGenerator.generateProcess(dsfProjectDTO);
+        SecretsGenerator.generateSecrets(dsfProjectDTO);
+        DockerGenerator.generateDockerFile(dsfProjectDTO);
+        DbGenerator.generateDb(dsfProjectDTO);
+        KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
+        ProxyGenerator.generateProxy(dsfProjectDTO);
+        PomGenerator.generatePomFile(dsfProjectDTO);
     }
 }
