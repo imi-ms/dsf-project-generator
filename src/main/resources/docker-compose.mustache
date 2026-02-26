@@ -21,9 +21,9 @@ services:
     networks:
     {{#project.organizations}}
       {{name}}-fhir-frontend:
-        ipv4_address: {{fhirProxyPassIp}}
+        ipv4_address: {{ipConfig.fhirProxyIp}}
       {{name}}-bpe-frontend:
-        ipv4_address: {{bpeProxyPassIp}}
+        ipv4_address: {{ipConfig.bpeProxyIp}}
       {{/project.organizations}}
       internet:
         aliases:
@@ -99,7 +99,7 @@ services:
     image: ghcr.io/datasharingframework/fhir:{{project.dsfVersion}}
     restart: "no"
     ports:
-      - 127.0.0.1:{{fhirPort}}:{{fhirPort}}
+      - 127.0.0.1:{{ipConfig.fhirPort}}:{{ipConfig.fhirPort}}
     secrets:
       - db_liquibase.password
       - db_{{name}}_fhir_user.password
@@ -117,7 +117,7 @@ services:
         target: /opt/fhir/log
     environment:
       TZ: Europe/Berlin
-      EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:{{fhirPort}}
+      EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:{{ipConfig.fhirPort}}
       JETTY_CLIENT_TRUSTSTORE_PEM: /run/secrets/ca_chain.crt
       DEV_DSF_FHIR_DB_LIQUIBASE_PASSWORD_FILE: /run/secrets/db_liquibase.password
       DEV_DSF_FHIR_DB_USER_PASSWORD_FILE: /run/secrets/db_{{name}}_fhir_user.password
@@ -161,7 +161,7 @@ services:
 
     networks:
       {{name}}-fhir-frontend:
-        ipv4_address: {{fhirIp}}
+        ipv4_address: {{ipConfig.fhirFrontendIp}}
       {{name}}-fhir-backend:
       internet:
     depends_on:
@@ -173,7 +173,7 @@ services:
     image: ghcr.io/datasharingframework/bpe:{{project.dsfVersion}}
     restart: "no"
     ports:
-      - 127.0.0.1:{{bpePort}}:{{bpePort}}
+      - 127.0.0.1:{{ipConfig.bpePort}}:{{ipConfig.bpePort}}
     secrets:
       - db_liquibase.password
       - db_{{name}}_bpe_user.password
@@ -199,7 +199,7 @@ services:
         target: /opt/bpe/last_event
     environment:
       TZ: Europe/Berlin
-      EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:{{bpePort}}
+      EXTRA_JVM_ARGS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:{{ipConfig.bpePort}}
       DEV_DSF_BPE_DB_LIQUIBASE_PASSWORD_FILE: /run/secrets/db_liquibase.password
       DEV_DSF_BPE_DB_USER_PASSWORD_FILE: /run/secrets/db_{{name}}_bpe_user.password
       DEV_DSF_BPE_DB_USER_ENGINE_PASSWORD_FILE: /run/secrets/db_{{name}}_bpe_user_engine.password
@@ -232,7 +232,7 @@ services:
 
     networks:
       {{name}}-bpe-frontend:
-        ipv4_address: {{bpeIp}}
+        ipv4_address: {{ipConfig.bpeFrontendIp}}
       {{name}}-bpe-backend:
       internet:
     depends_on:
@@ -289,14 +289,14 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: {{fhirFrontendSubnet}}
+        - subnet: {{ipConfig.fhirSubnetIp}}/28
   {{name}}-fhir-backend:
   {{name}}-bpe-frontend:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: {{bpeFrontendSubnet}}
+        - subnet: {{ipConfig.bpeSubnetIp}}/28
   {{name}}-bpe-backend:
   {{/project.organizations}}
   db:

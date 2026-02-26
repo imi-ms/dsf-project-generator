@@ -18,7 +18,7 @@ public class PomGenerator {
             Mustache mustache = mf.compile("pom.mustache");
             StringWriter writer = new StringWriter();
             mustache.execute(writer, config).flush();
-            File pomFile = new File(dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.getProcessFolderName() +
+            File pomFile = new File(dsfProjectDTO.getOutputPath() + File.separator + dsfProjectDTO.generateProcessFolderName() +
                 File.separator + "pom.xml");
             Files.write(pomFile.toPath(),
                 writer.toString().getBytes());

@@ -33,7 +33,7 @@ public class FolderGenerator {
             // 2.3) Create dev-setup
             File devSetup = this.createFolder(projectFolder, "dev-setup");
             this.addGitKeep(devSetup);
-            List<String> devFolders = List.of("db", "keycloak/data/h2", "keycloak/import", "proxy/conf.d", "secrets");
+            List<String> devFolders = List.of("db", "keycloak", "proxy/conf.d", "secrets");
             for (String dev : devFolders) {
                 File devFolder = this.createFolders(devSetup, dev);
                 this.addGitKeep(devFolder);
@@ -69,7 +69,8 @@ public class FolderGenerator {
             }
 
             // 2.5) Create process folder
-            File processFolder = this.createFolder(projectFolder, dsfProjectDTO.getProcessFolderName());
+            File processFolder = this.createFolder(projectFolder,
+                    dsfProjectDTO.generateProcessFolderName());
             File processSrcFolder = this.createFolder(processFolder, "src");
 
             // 2.5.1) Create main folder
@@ -78,9 +79,10 @@ public class FolderGenerator {
                     dsfProjectDTO.getDomain() + File.separator + "process" + File.separator +
                     dsfProjectDTO.getProjectName().replace("-process", "");
             File processSrcJavaFolder = this.createFolders(processSrcMainFolder, packageFolder);
-            List<String> processFolders = List.of("message", "service", "spring/config");
+            List<String> processFolders = List.of("listener", "message", "service", "spring/config");
             for (String process : processFolders) {
-                this.createFolders(processSrcJavaFolder, process);
+                File processSubFolder = this.createFolders(processSrcJavaFolder, process);
+                this.addGitKeep(processSubFolder);
             }
 
             // 2.5.2) Create resource folder
@@ -88,16 +90,19 @@ public class FolderGenerator {
             File resourceConfigFolder = this.createFolders(resourceMainFolder, "META-INF/services");
             File resourceBpeFolder = this.createFolder(resourceMainFolder, "bpe");
             File resourceFhirFolder = this.createFolder(resourceMainFolder, "fhir");
-            List<String> fhirResourceFolders = List.of("ActivityDefinition", "CodeSystem", "StructureDefinition",
-                    "Task", "ValueSet");
+            List<String> fhirResourceFolders = List.of("ActivityDefinition", "CodeSystem", "Questionnaire",
+                    "StructureDefinition", "Task", "ValueSet");
             for (String fhirResourceFolder : fhirResourceFolders) {
                 this.createFolders(resourceFhirFolder, fhirResourceFolder);
             }
-            File resourceTemplateFolder = this.createFolder(resourceMainFolder, "template");
+            File resourceTemplatesFolder = this.createFolder(resourceMainFolder, "templates");
 
             // 2.5.3) Create test folder
             File processTestFolder = this.createFolder(processFolder, "test");
-            File processTestJavaFolders = this.createFolders(processTestFolder, packageFolder);
+            File processTestBpeJavaFolders = this.createFolders(processTestFolder, packageFolder +
+                    File.separator + "bpe");
+            File processTestFhirJavaFolders = this.createFolders(processTestFolder, packageFolder +
+                    File.separator + "fhir/profile");
             File processTestResourcesFolder = this.createFolder(processTestFolder, "resources");
             return true;
         } catch (Exception e) {
@@ -126,5 +131,4 @@ public class FolderGenerator {
         File directoryKeep = new File(directory + File.separator, GITKEEP);
         if (!directoryKeep.createNewFile()) throw new Exception("GitKeep could not be created.");
     }
-
 }

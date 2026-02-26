@@ -19,8 +19,8 @@ public class ProxyGenerator {
                 String proxyStr = Files.readString(proxyConf.toPath());
                 String organizationName = organization.getNamespace();
                 String proxyOrganizationStr = proxyStr.replace("{ organizationName }", organizationName)
-                        .replace("{ proxyFhirIp }", organization.getFhirProxyPassIp())
-                        .replace("{ proxyBpeIp }", organization.getBpeProxyPassIp());
+                        .replace("{ proxyFhirIp }", organization.getIpConfig().getFhirProxyIp())
+                        .replace("{ proxyBpeIp }", organization.getIpConfig().getBpeProxyIp());
                 File proxyOrganizationFile = new File(dsfProjectDTO.getOutputPath() + File.separator +
                         "dev-setup/proxy/conf.d/"  + organizationName + ".conf");
                 Files.write(proxyOrganizationFile.toPath(),
@@ -33,6 +33,7 @@ public class ProxyGenerator {
             Files.copy(nginxConf.toPath(), nginxConfFile.toPath(), REPLACE_EXISTING);
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }
