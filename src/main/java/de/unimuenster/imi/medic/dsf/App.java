@@ -231,13 +231,10 @@ public class App extends Application {
         return numberOfOrganizations.getValue();
     }
 
-    private void setSuccessToStage() {
-        AnchorPane anchorPane = (AnchorPane) scene.lookup("#main");
-        anchorPane.getChildren().clear();
-
-        Label successLabel = new Label();
-        successLabel.setText("Success!");
-        anchorPane.getChildren().add(successLabel);
+    private void setSuccessToStage() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/Success.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 
 
