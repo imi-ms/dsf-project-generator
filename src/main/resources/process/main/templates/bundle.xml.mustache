@@ -1,0 +1,142 @@
+<Bundle xmlns="http://hl7.org/fhir">
+	<type value="transaction"/>
+	{{#project.organizations}}
+	<entry>
+		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+		<resource>
+			<Organization xmlns="http://hl7.org/fhir">
+				<meta>
+					<profile value="http://dsf.dev/fhir/StructureDefinition/organization"/>
+					<tag>
+						<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag"/>
+						<code value="ALL"/>
+					</tag>
+				</meta>
+				<extension url="http://dsf.dev/fhir/StructureDefinition/extension-certificate-thumbprint">
+					{{=<% %>=}}<valueString value="${<%name%>-client.thumbprint}"/><%={{ }}=%>
+				</extension>
+				<identifier>
+					<system value="http://dsf.dev/sid/organization-identifier"/>
+					<value value="{{ name }}.dsf.test"/>
+				</identifier>
+				<active value="true"/>
+				<name value="Test {{ name.toUpperCase }}"/>
+				<endpoint>
+					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+					<type value="Endpoint"/>
+				</endpoint>
+			</Organization>
+		</resource>
+		<request>
+			<method value="PUT"/>
+			<url value="Organization?identifier=http://dsf.dev/sid/organization-identifier|{{ name }}.dsf.test"/>
+		</request>
+	</entry>
+	{{/project.organizations}}
+	{{#project.organizations}}
+	<entry>
+		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+		<resource>
+			<Endpoint xmlns="http://hl7.org/fhir">
+				<meta>
+					<profile value="http://dsf.dev/fhir/StructureDefinition/endpoint"/>
+					<tag>
+						<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag"/>
+						<code value="ALL"/>
+					</tag>
+				</meta>
+				<identifier>
+					<system value="http://dsf.dev/sid/endpoint-identifier"/>
+					<value value="{{ name }}.dsf.test_Endpoint"/>
+				</identifier>
+				<status value="active"/>
+				<connectionType>
+					<system value="http://terminology.hl7.org/CodeSystem/endpoint-connection-type"/>
+					<code value="hl7-fhir-rest"/>
+				</connectionType>
+				<name value="Test {{ name.toUpperCase }} Endpoint"/>
+				<managingOrganization>
+					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+					<type value="Organization"/>
+				</managingOrganization>
+				<payloadType>
+					<coding>
+						<system value="http://hl7.org/fhir/resource-types"/>
+						<code value="Task"/>
+					</coding>
+				</payloadType>
+				<payloadMimeType value="application/fhir+json"/>
+				<payloadMimeType value="application/fhir+xml"/>
+				<address value="https://{{ name }}/fhir"/>
+			</Endpoint>
+		</resource>
+		<request>
+			<method value="PUT"/>
+			<url value="Endpoint?identifier=http://dsf.dev/sid/endpoint-identifier|{{ name }}.dsf.test_Endpoint"/>
+		</request>
+	</entry>
+    {{/project.organizations}}
+	<entry>
+		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%project.projectOrganization%>_id }"/><%={{ }}=%>
+		<resource>
+			<Organization xmlns="http://hl7.org/fhir">
+				<meta>
+					<profile value="http://dsf.dev/fhir/StructureDefinition/organization-parent"/>
+					<tag>
+						<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag"/>
+						<code value="ALL"/>
+					</tag>
+				</meta>
+				<identifier>
+					<system value="http://dsf.dev/sid/organization-identifier"/>
+					<value value="{{ project.projectOrganization }}"/>
+				</identifier>
+				<active value="true"/>
+				<name value="{{ project.projectOrganization }}"/>
+			</Organization>
+		</resource>
+		<request>
+			<method value="PUT"/>
+			<url value="Organization?identifier=http://dsf.dev/sid/organization-identifier|{{ project.projectOrganization }}"/>
+		</request>
+	</entry>
+	{{#project.organizations}}
+	<entry>
+		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_3 }"/><%={{ }}=%>
+		<resource>
+			<OrganizationAffiliation xmlns="http://hl7.org/fhir">
+				<meta>
+					<profile value="http://dsf.dev/fhir/StructureDefinition/organization-affiliation"/>
+					<tag>
+						<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag"/>
+						<code value="ALL"/>
+					</tag>
+				</meta>
+				<active value="true"/>
+				<organization>
+					{{=<% %>=}}<reference value="urn:uuid:{ <%project.projectOrganization%>_id }"/><%={{ }}=%>
+					<type value="Organization"/>
+				</organization>
+				<participatingOrganization>
+					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+					<type value="Organization"/>
+				</participatingOrganization>
+				<code>
+					<coding>
+						<system value="http://dsf.dev/fhir/CodeSystem/organization-role"/>
+						<code value="{{ name.toUpperCase }}"/>
+					</coding>
+				</code>
+				<endpoint>
+					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+					<type value="Endpoint"/>
+				</endpoint>
+			</OrganizationAffiliation>
+		</resource>
+		<request>
+			<method value="PUT"/>
+			<url value="OrganizationAffiliation?primary-organization:identifier=http://dsf.dev/sid/organization-identifier|{{ project.projectOrganization }}&amp;participating-organization:identifier=http://dsf.dev/sid/organization-identifier|{{ name }}.dsf.test"/>
+		</request>
+	</entry>
+    {{/project.organizations}}
+</Bundle>

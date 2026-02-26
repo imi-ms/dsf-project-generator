@@ -95,7 +95,7 @@ public class FolderGenerator {
             for (String fhirResourceFolder : fhirResourceFolders) {
                 this.createFolders(resourceFhirFolder, fhirResourceFolder);
             }
-            File resourceTemplateFolder = this.createFolder(resourceMainFolder, "template");
+            File resourceTemplatesFolder = this.createFolder(resourceMainFolder, "templates");
 
             // 2.5.3) Create test folder
             File processTestFolder = this.createFolder(processFolder, "test");
