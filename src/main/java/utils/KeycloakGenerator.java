@@ -144,6 +144,8 @@ public class KeycloakGenerator {
                 String keycloakOrganization = keycloakStr
                         .replace("\\{ processName }", processName)
                         .replace("\\{ organizationName }", organizationName)
+                        .replace("\\{ oicdFhirSecret }", organization.getFhirOIDCSecret())
+                        .replace("\\{ oicdBpeSecret }", organization.getBpeOIDCSecret())
                         .replace("\\{ uuidOne }", uuidOne)
                         .replace("\\{ uuidCredentialsOne }", uuidCredentialsOne)
                         .replace("\\{ uuidCredentialsTwo }", uuidCredentialsTwo)
