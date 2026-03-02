@@ -3,7 +3,6 @@ package utils;
 import shared.DsfOrganizationDTO;
 import shared.DsfProjectDTO;
 import java.io.File;
-import java.nio.file.Files;
 import java.util.List;
 
 public class FolderGenerator {
@@ -129,8 +128,7 @@ public class FolderGenerator {
 
     private void addGitKeep(File directory) throws Exception {
         String GITKEEP = ".gitkeep";
-        //File directoryKeep = new File(directory + File.separator, GITKEEP);
-        File directoryKeep = new File(directory + File.separator, "README.md");
+        File directoryKeep = new File(directory + File.separator, GITKEEP);
         if (!directoryKeep.createNewFile()) throw new Exception("GitKeep could not be created.");
     }
 
