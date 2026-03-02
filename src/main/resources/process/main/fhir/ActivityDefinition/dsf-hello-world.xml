@@ -1,12 +1,12 @@
 <ActivityDefinition xmlns="http://hl7.org/fhir">
 	<meta>
-		<profile value="http://{ organizationName }/fhir/StructureDefinition/activity-definition" />
+		<profile value="http://dsf.dev/fhir/StructureDefinition/activity-definition" />
 		<tag>
-			<system value="http://{ organizationName }/fhir/CodeSystem/read-access-tag" />
+			<system value="http://dsf.dev/fhir/CodeSystem/read-access-tag" />
 			<code value="ALL" />
 		</tag>
 	</meta>
-	<extension url="http://{ organizationName }/fhir/StructureDefinition/extension-process-authorization">
+	<extension url="http://dsf.dev/fhir/StructureDefinition/extension-process-authorization">
 		<extension url="message-name">
 			<valueString value="helloWorld" />
 		</extension>
@@ -15,25 +15,25 @@
 		</extension>
 		<extension url="requester">
 			<valueCoding>
-				<system value="http://{ organizationName }/fhir/CodeSystem/process-authorization" />
+				<system value="http://dsf.dev/fhir/CodeSystem/process-authorization" />
 				<code value="LOCAL_ALL" />
 			</valueCoding>
 		</extension>
 		<extension url="requester">
 			<valueCoding>
-				<extension url="http://{ organizationName }/fhir/StructureDefinition/extension-process-authorization-practitioner">
+				<extension url="http://dsf.dev/fhir/StructureDefinition/extension-process-authorization-practitioner">
 					<valueCoding>
-						<system value="http://{ organizationName }/fhir/CodeSystem/practitioner-role" />
+						<system value="http://dsf.dev/fhir/CodeSystem/practitioner-role" />
 						<code value="DIC_USER" />
 					</valueCoding>
 				</extension>
-				<system value="http://{ organizationName }/fhir/CodeSystem/process-authorization" />
+				<system value="http://dsf.dev/fhir/CodeSystem/process-authorization" />
 				<code value="LOCAL_ALL_PRACTITIONER" />
 			</valueCoding>
 		</extension>
 		<extension url="recipient">
 			<valueCoding>
-				<system value="http://{ organizationName }/fhir/CodeSystem/process-authorization" />
+				<system value="http://dsf.dev/fhir/CodeSystem/process-authorization" />
 				<code value="LOCAL_ALL" />
 			</valueCoding>
 		</extension>

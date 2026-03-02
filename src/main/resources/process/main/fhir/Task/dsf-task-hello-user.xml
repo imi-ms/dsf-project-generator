@@ -3,7 +3,7 @@
 		<profile value="http://{ organizationName }/fhir/StructureDefinition/task-hello-user|#{version}" />
 	</meta>
 	<identifier>
-		<system value="http://{ organizationName }/sid/task-identifier" />
+		<system value="http://dsf.dev/sid/task-identifier" />
 		<value value="http://{ organizationName }/bpe/Process/helloUser/#{version}/task-hello-user" />
 	</identifier>
 	<instantiatesCanonical value="http://{ organizationName }/bpe/Process/helloUser|#{version}" />
@@ -13,7 +13,7 @@
 	<requester>
 		<type value="Organization" />
 		<identifier>
-			<system value="http://{ organizationName }/sid/organization-identifier" />
+			<system value="http://dsf.dev/sid/organization-identifier" />
 			<value value="#{organization}" />
 		</identifier>
 	</requester>
@@ -21,7 +21,7 @@
 		<recipient>
 			<type value="Organization" />
 			<identifier>
-				<system value="http://{ organizationName }/sid/organization-identifier" />
+				<system value="http://dsf.dev/sid/organization-identifier" />
 				<value value="#{organization}" />
 			</identifier>
 		</recipient>
@@ -29,7 +29,7 @@
 	<input>
 		<type>
 			<coding>
-				<system value="http://{ organizationName }/fhir/CodeSystem/bpmn-message" />
+				<system value="http://dsf.dev/fhir/CodeSystem/bpmn-message" />
 				<code value="message-name" />
 			</coding>
 		</type>

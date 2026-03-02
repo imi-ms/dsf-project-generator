@@ -6,7 +6,7 @@
       <bpmn:incoming>SequenceFlow_0oyvmcd</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0oyvmcd" sourceRef="helloWorldTask" targetRef="EndEvent_0xd0x8k" />
-    <bpmn:serviceTask id="helloWorldTask" name="Hello World" camunda:class="dev.dsf.bpe.service.HelloWorld">
+    <bpmn:serviceTask id="helloWorldTask" name="Hello World" camunda:class="{ packageName }.service.HelloWorld">
       <bpmn:incoming>SequenceFlow_0bbhq2r</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0oyvmcd</bpmn:outgoing>
     </bpmn:serviceTask>

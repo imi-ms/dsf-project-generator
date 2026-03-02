@@ -31,7 +31,7 @@
       <bpmn:outgoing>Flow_00nx7hv</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_034bfq7" sourceRef="logUserTaskRespose" targetRef="EndEvent_0xd0x8k" />
-    <bpmn:serviceTask id="logUserTaskRespose" name="log user task respose" camunda:class="dev.dsf.bpe.service.LogUserTaskResponse">
+    <bpmn:serviceTask id="logUserTaskRespose" name="log user task respose" camunda:class="{ packageName }.service.LogUserTaskResponse">
       <bpmn:incoming>Flow_00nx7hv</bpmn:incoming>
       <bpmn:outgoing>Flow_034bfq7</bpmn:outgoing>
     </bpmn:serviceTask>

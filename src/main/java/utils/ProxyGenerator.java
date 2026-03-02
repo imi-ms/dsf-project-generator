@@ -19,8 +19,8 @@ public class ProxyGenerator {
                 String proxyStr = Files.readString(proxyConf.toPath());
                 String organizationName = organization.getNamespace();
                 String proxyOrganizationStr = proxyStr.replace("{ organizationName }", organizationName)
-                        .replace("{ proxyFhirIp }", organization.getIpConfig().getFhirProxyIp())
-                        .replace("{ proxyBpeIp }", organization.getIpConfig().getBpeProxyIp());
+                        .replace("{ frontendFhirIp }", organization.getIpConfig().getFhirFrontendIp())
+                        .replace("{ frontendBpeIp }", organization.getIpConfig().getBpeFrontendIp());
                 File proxyOrganizationFile = new File(dsfProjectDTO.getOutputPath() + File.separator +
                         "dev-setup/proxy/conf.d/"  + organizationName + ".conf");
                 Files.write(proxyOrganizationFile.toPath(),

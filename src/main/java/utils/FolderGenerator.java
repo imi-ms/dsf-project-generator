@@ -3,6 +3,7 @@ package utils;
 import shared.DsfOrganizationDTO;
 import shared.DsfProjectDTO;
 import java.io.File;
+import java.nio.file.Files;
 import java.util.List;
 
 public class FolderGenerator {
@@ -17,8 +18,10 @@ public class FolderGenerator {
         try {
             String gitKeep = ".gitkeep";
 
-            // 1.) Create project directory - if not exists
+            // 1.) Create project directory - if not exists, else delete
             File projectFolder = new File(dsfProjectDTO.getOutputPath());
+            this.deleteDirectory(projectFolder);
+
             if (!projectFolder.mkdirs()) return false;
 
             // 2.) Create main directories
@@ -107,9 +110,7 @@ public class FolderGenerator {
             return true;
         } catch (Exception e) {
             File projectFolder = new File(dsfProjectDTO.getOutputPath());
-            if (projectFolder.exists()) {
-                projectFolder.delete();
-            }
+            this.deleteDirectory(projectFolder);
             return  false;
         }
     }
@@ -128,7 +129,21 @@ public class FolderGenerator {
 
     private void addGitKeep(File directory) throws Exception {
         String GITKEEP = ".gitkeep";
-        File directoryKeep = new File(directory + File.separator, GITKEEP);
+        //File directoryKeep = new File(directory + File.separator, GITKEEP);
+        File directoryKeep = new File(directory + File.separator, "README.md");
         if (!directoryKeep.createNewFile()) throw new Exception("GitKeep could not be created.");
+    }
+
+    /*
+    Source: https://www.baeldung.com/java-delete-directory
+     */
+    private boolean deleteDirectory(File directoryToBeDeleted) {
+        File[] allContents = directoryToBeDeleted.listFiles();
+        if (allContents != null) {
+            for (File file : allContents) {
+                deleteDirectory(file);
+            }
+        }
+        return directoryToBeDeleted.delete();
     }
 }
