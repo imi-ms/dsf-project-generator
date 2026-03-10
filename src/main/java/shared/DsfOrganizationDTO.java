@@ -1,8 +1,6 @@
 package shared;
 
-import java.io.IOException;
 import java.util.Locale;
-import utils.NetworkHandler;
 import utils.PasswordGenerator;
 
 public class DsfOrganizationDTO {
@@ -14,6 +12,7 @@ public class DsfOrganizationDTO {
     private String fhirOIDCSecret;
     private String bpeOIDCSecret;
     private IpConfigDTO ipConfig;
+    private KeycloakSettingsDTO keycloakSettings;
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
@@ -23,6 +22,7 @@ public class DsfOrganizationDTO {
         this.ipConfig = builder.ipConfig;
         this.fhirOIDCSecret = builder.fhirOIDCSecret;
         this.bpeOIDCSecret = builder.bpeOIDCSecret;
+        this.keycloakSettings = new KeycloakSettingsDTO();
     }
 
     public String getNameUC() {
@@ -49,6 +49,10 @@ public class DsfOrganizationDTO {
 
     public String getNamespace() {
         return this.namespace;
+    }
+
+    public String getNamespaceDash() {
+        return this.namespace.replaceAll("_", "-");
     }
 
     public DsfOrganizationRole getRole() {
@@ -83,10 +87,15 @@ public class DsfOrganizationDTO {
         this.bpeOIDCSecret = bpeOIDCSecret;
     }
 
+    public KeycloakSettingsDTO getKeycloakSettings() {
+        return this.keycloakSettings;
+    }
+
+
+
     public static class Builder {
 
         private String name;
-        private String nameUC;
         private DsfOrganizationRole role;
         private String fhirOIDCSecret;
         private IpConfigDTO ipConfig;
@@ -121,8 +130,8 @@ public class DsfOrganizationDTO {
 
         private void generateSecrets() {
             PasswordGenerator secretGenerator = new PasswordGenerator();
-            fhirOIDCSecret = secretGenerator.generateSecret();
-            bpeOIDCSecret = secretGenerator.generateSecret();
+            this.fhirOIDCSecret = secretGenerator.generateSecret();
+            this.bpeOIDCSecret = secretGenerator.generateSecret();
         }
 
         public DsfOrganizationDTO build() {

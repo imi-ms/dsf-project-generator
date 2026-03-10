@@ -1,6 +1,6 @@
 {
-  "id" : "\{ uuidOne }",
-  "realm" : "\{ organizationName }",
+  "id" : "{{ organization.getKeycloakSettings.uuidOne }}",
+  "realm" : "{{ organization.getNamespaceDash }}",
   "notBefore" : 0,
   "defaultSignatureAlgorithm" : "RS256",
   "revokeRefreshToken" : false,
@@ -45,24 +45,24 @@
   "failureFactor" : 30,
   "roles" : {
     "realm" : [ {
-      "id" : "\{ uuidRealmOne }",
-      "name" : "\{ processName }",
+      "id" : "{{ organization.getKeycloakSettings.uuidRealmOne }}",
+      "name" : "{{ project.getProjectNameDash }}",
       "description" : "",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "\{ uuidOne }",
+      "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}",
       "attributes" : { }
     }, {
-      "id" : "\{ uuidRealmTwo }",
+      "id" : "{{ organization.getKeycloakSettings.uuidRealmTwo }}",
       "name" : "uma_authorization",
       "description" : "${role_uma_authorization}",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "\{ uuidOne }",
+      "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}",
       "attributes" : { }
     }, {
-      "id" : "\{ uuidRealmThree }",
-      "name" : "default-roles-\{ organizationName }",
+      "id" : "{{ organization.getKeycloakSettings.uuidRealmThree }}",
+      "name" : "default-roles-{{ organization.getNamespaceDash }}",
       "description" : "${role_default-roles}",
       "composite" : true,
       "composites" : {
@@ -72,36 +72,36 @@
         }
       },
       "clientRole" : false,
-      "containerId" : "\{ uuidOne }",
+      "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}",
       "attributes" : { }
     }, {
-      "id" : "\{ uuidRealmFour }",
+      "id" : "{{ organization.getKeycloakSettings.uuidRealmFour }}",
       "name" : "admin",
       "description" : "",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "\{ uuidOne }",
+      "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}",
       "attributes" : { }
     }, {
-      "id" : "\{ uuidRealmFive }",
+      "id" : "{{ organization.getKeycloakSettings.uuidRealmFive }}",
       "name" : "offline_access",
       "description" : "${role_offline-access}",
       "composite" : false,
       "clientRole" : false,
-      "containerId" : "\{ uuidOne }",
+      "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}",
       "attributes" : { }
     } ],
     "client" : {
       "realm-management" : [ {
-        "id" : "\{ uuidRealmMgmtOne }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtOne }}",
         "name" : "view-realm",
         "description" : "${role_view-realm}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtTwo }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtTwo }}",
         "name" : "view-users",
         "description" : "${role_view-users}",
         "composite" : true,
@@ -111,50 +111,50 @@
           }
         },
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtThree }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtThree }}",
         "name" : "view-authorization",
         "description" : "${role_view-authorization}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtFour }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtFour }}",
         "name" : "manage-users",
         "description" : "${role_manage-users}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtFive }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtFive }}",
         "name" : "manage-authorization",
         "description" : "${role_manage-authorization}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtSix }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtSix }}",
         "name" : "query-clients",
         "description" : "${role_query-clients}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtSeven }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtSeven }}",
         "name" : "manage-events",
         "description" : "${role_manage-events}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtEight }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtEight }}",
         "name" : "realm-admin",
         "description" : "${role_realm-admin}",
         "composite" : true,
@@ -164,74 +164,74 @@
           }
         },
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtNine }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtNine }}",
         "name" : "query-realms",
         "description" : "${role_query-realms}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtTen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtTen }}",
         "name" : "impersonation",
         "description" : "${role_impersonation}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtEleven }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtEleven }}",
         "name" : "query-users",
         "description" : "${role_query-users}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtTwelve }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtTwelve }}",
         "name" : "manage-clients",
         "description" : "${role_manage-clients}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtThirteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtThirteen }}",
         "name" : "manage-identity-providers",
         "description" : "${role_manage-identity-providers}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtFourteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtFourteen }}",
         "name" : "manage-realm",
         "description" : "${role_manage-realm}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtFifteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtFifteen }}",
         "name" : "create-client",
         "description" : "${role_create-client}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtNineteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtNineteen }}",
         "name" : "view-events",
         "description" : "${role_view-events}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtSixteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtSixteen }}",
         "name" : "view-clients",
         "description" : "${role_view-clients}",
         "composite" : true,
@@ -241,65 +241,65 @@
           }
         },
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtSeventeen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtSeventeen }}",
         "name" : "view-identity-providers",
         "description" : "${role_view-identity-providers}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidRealmMgmtEighteen }",
+        "id" : "{{ organization.getKeycloakSettings.uuidRealmMgmtEighteen }}",
         "name" : "query-groups",
         "description" : "${role_query-groups}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
         "attributes" : { }
       } ],
       "security-admin-console" : [ ],
-      "\{ organizationName }-fhir" : [ ],
+      "{{ organization.getNamespaceDash }}-fhir" : [ ],
       "admin-cli" : [ ],
       "account-console" : [ ],
       "broker" : [ {
-        "id" : "\{ uuidBroker }",
+        "id" : "{{ organization.getKeycloakSettings.uuidBroker }}",
         "name" : "read-token",
         "description" : "${role_read-token}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidBrokerContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidBrokerContainerId }}",
         "attributes" : { }
       } ],
-      "\{ organizationName }-bpe" : [ ],
+      "{{ organization.getNamespaceDash }}-bpe" : [ ],
       "account" : [ {
-        "id" : "\{ uuidAccountOne }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountOne }}",
         "name" : "manage-account-links",
         "description" : "${role_manage-account-links}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountTwo }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountTwo }}",
         "name" : "view-consent",
         "description" : "${role_view-consent}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountThree }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountThree }}",
         "name" : "view-profile",
         "description" : "${role_view-profile}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountFour }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountFour }}",
         "name" : "manage-consent",
         "description" : "${role_manage-consent}",
         "composite" : true,
@@ -309,10 +309,10 @@
           }
         },
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountFive }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountFive }}",
         "name" : "manage-account",
         "description" : "${role_manage-account}",
         "composite" : true,
@@ -322,43 +322,43 @@
           }
         },
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountSix }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountSix }}",
         "name" : "delete-account",
         "description" : "${role_delete-account}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountSeven }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountSeven }}",
         "name" : "view-applications",
         "description" : "${role_view-applications}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       }, {
-        "id" : "\{ uuidAccountEight }",
+        "id" : "{{ organization.getKeycloakSettings.uuidAccountEight }}",
         "name" : "view-groups",
         "description" : "${role_view-groups}",
         "composite" : false,
         "clientRole" : true,
-        "containerId" : "\{ uuidAccountContainerId }",
+        "containerId" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
         "attributes" : { }
       } ]
     }
   },
   "groups" : [ ],
   "defaultRole" : {
-    "id" : "\{ uuidRealmThree }",
-    "name" : "default-roles-\{ organizationName }",
+    "id" : "{{ organization.getKeycloakSettings.uuidRealmThree }}",
+    "name" : "default-roles-{{ organization.getNamespaceDash }}",
     "description" : "${role_default-roles}",
     "composite" : true,
     "clientRole" : false,
-    "containerId" : "\{ uuidOne }"
+    "containerId" : "{{ organization.getKeycloakSettings.uuidOne }}"
   },
   "requiredCredentials" : [ "password" ],
   "otpPolicyType" : "totp",
@@ -390,7 +390,7 @@
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyPasswordlessAcceptableAaguids" : [ ],
   "users" : [ {
-    "id" : "\{ uuidUserOne }",
+    "id" : "{{ organization.getKeycloakSettings.uuidUserOne }}",
     "createdTimestamp" : 1678909980386,
     "username" : "test",
     "enabled" : true,
@@ -398,9 +398,9 @@
     "emailVerified" : true,
     "firstName" : "Tyler",
     "lastName" : "Tester",
-    "email" : "\{ organizationName }@test.com",
+    "email" : "{{ organization.getNamespaceDash }}@test.com",
     "credentials" : [ {
-      "id" : "\{ uuidCredentialsOne }",
+      "id" : "{{ organization.getKeycloakSettings.uuidCredentialsOne }}",
       "type" : "password",
       "userLabel" : "My password",
       "createdDate" : 1678909990946,
@@ -409,11 +409,11 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-\{ organizationName }", "admin" ],
+    "realmRoles" : [ "default-roles-{{ organization.getNamespaceDash }}", "admin" ],
     "notBefore" : 0,
     "groups" : [ ]
   }, {
-    "id" : "\{ uuidUserTwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidUserTwo }}",
     "createdTimestamp" : 1711096483488,
     "username" : "tutorial",
     "enabled" : true,
@@ -423,7 +423,7 @@
     "lastName" : "Testerson",
     "email" : "tutorial@dsf.dev",
     "credentials" : [ {
-      "id" : "\{ uuidCredentialsTwo }",
+      "id" : "{{ organization.getKeycloakSettings.uuidCredentialsTwo }}",
       "type" : "password",
       "userLabel" : "My password",
       "createdDate" : 1711096504736,
@@ -432,7 +432,7 @@
     } ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
-    "realmRoles" : [ "default-roles-\{ organizationName }", "tutorial" ],
+    "realmRoles" : [ "default-roles-{{ organization.getNamespaceDash }}", "tutorial" ],
     "notBefore" : 0,
     "groups" : [ ]
   } ],
@@ -447,16 +447,16 @@
     } ]
   },
   "clients" : [ {
-    "id" : "\{ uuidAccountContainerId }",
+    "id" : "{{ organization.getKeycloakSettings.uuidAccountContainerId }}",
     "clientId" : "account",
     "name" : "${client_account}",
     "rootUrl" : "${authBaseUrl}",
-    "baseUrl" : "/realms/\{ organizationName }/account/",
+    "baseUrl" : "/realms/{{ organization.getNamespaceDash }}/account/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/realms/\{ organizationName }/account/*" ],
+    "redirectUris" : [ "/realms/{{ organization.getNamespaceDash }}/account/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -477,16 +477,16 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidUserThree }",
+    "id" : "{{ organization.getKeycloakSettings.uuidUserThree }}",
     "clientId" : "account-console",
     "name" : "${client_account-console}",
     "rootUrl" : "${authBaseUrl}",
-    "baseUrl" : "/realms/\{ organizationName }/account/",
+    "baseUrl" : "/realms/{{ organization.getNamespaceDash }}/account/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/realms/\{ organizationName }/account/*" ],
+    "redirectUris" : [ "/realms/{{ organization.getNamespaceDash }}/account/*" ],
     "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -506,7 +506,7 @@
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperOne }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperOne }}",
       "name" : "audience resolve",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-audience-resolve-mapper",
@@ -516,7 +516,7 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidProtocolMapperTwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwo }}",
     "clientId" : "admin-cli",
     "name" : "${client_admin-cli}",
     "surrogateAuthRequired" : false,
@@ -544,7 +544,7 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidBrokerContainerId }",
+    "id" : "{{ organization.getKeycloakSettings.uuidBrokerContainerId }}",
     "clientId" : "broker",
     "name" : "${client_broker}",
     "surrogateAuthRequired" : false,
@@ -572,18 +572,18 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidProtocolMapperThree }",
-    "clientId" : "\{ organizationName }-bpe",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThree }}",
+    "clientId" : "{{ organization.getNamespaceDash }}-bpe",
     "name" : "",
     "description" : "",
-    "rootUrl" : "https://\{ organizationName }",
+    "rootUrl" : "https://{{ organization.getNamespaceDash }}",
     "adminUrl" : "",
-    "baseUrl" : "https://\{ organizationName }/bpe",
+    "baseUrl" : "https://{{ organization.getNamespaceDash }}/bpe",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "secret" : "\{ oicdBpeSecret }",
+    "secret" : "{{ oicdBpeSecret }}",
     "redirectUris" : [ "/bpe/*" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
@@ -600,7 +600,7 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1678910228",
       "backchannel.logout.session.required" : "true",
-      "backchannel.logout.url" : "https://\{ organizationName }/bpe/back-channel-logout",
+      "backchannel.logout.url" : "https://{{ organization.getNamespaceDash }}/bpe/back-channel-logout",
       "post.logout.redirect.uris" : "+",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
@@ -612,18 +612,18 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidProtocolMapperFour }",
-    "clientId" : "\{ organizationName }-fhir",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFour }}",
+    "clientId" : "{{ organization.getNamespaceDash }}-fhir",
     "name" : "",
     "description" : "",
-    "rootUrl" : "https://\{ organizationName }",
+    "rootUrl" : "https://{{ organization.getNamespaceDash }}",
     "adminUrl" : "",
-    "baseUrl" : "https://\{ organizationName }/fhir",
+    "baseUrl" : "https://{{ organization.getNamespaceDash }}/fhir",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "secret" : "\{ oicdFhirSecret }",
+    "secret" : "{{ oicdFhirSecret }}",
     "redirectUris" : [ "/fhir/*" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
@@ -640,7 +640,7 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1678910084",
       "backchannel.logout.session.required" : "true",
-      "backchannel.logout.url" : "https://\{ organizationName }/fhir/back-channel-logout",
+      "backchannel.logout.url" : "https://{{ organization.getNamespaceDash }}/fhir/back-channel-logout",
       "post.logout.redirect.uris" : "+",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
@@ -652,7 +652,7 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidContainerId }",
+    "id" : "{{ organization.getKeycloakSettings.uuidContainerId }}",
     "clientId" : "realm-management",
     "name" : "${client_realm-management}",
     "surrogateAuthRequired" : false,
@@ -680,16 +680,16 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
-    "id" : "\{ uuidProtocolMapperFive }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFive }}",
     "clientId" : "security-admin-console",
     "name" : "${client_security-admin-console}",
     "rootUrl" : "${authAdminUrl}",
-    "baseUrl" : "/admin/\{ organizationName }/console/",
+    "baseUrl" : "/admin/{{ organization.getNamespaceDash }}/console/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "/admin/\{ organizationName }/console/*" ],
+    "redirectUris" : [ "/admin/{{ organization.getNamespaceDash }}/console/*" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -709,7 +709,7 @@
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperSix }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperSix }}",
       "name" : "locale",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -727,7 +727,7 @@
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   } ],
   "clientScopes" : [ {
-    "id" : "\{ uuidProtocolMapperSeven }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperSeven }}",
     "name" : "role_list",
     "description" : "SAML role list",
     "protocol" : "saml",
@@ -736,7 +736,7 @@
       "display.on.consent.screen" : "true"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperEight }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperEight }}",
       "name" : "role list",
       "protocol" : "saml",
       "protocolMapper" : "saml-role-list-mapper",
@@ -748,7 +748,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperNine }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperNine }}",
     "name" : "web-origins",
     "description" : "OpenID Connect scope for add allowed web origins to the access token",
     "protocol" : "openid-connect",
@@ -758,7 +758,7 @@
       "consent.screen.text" : ""
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperTen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTen }}",
       "name" : "allowed web origins",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-allowed-origins-mapper",
@@ -766,7 +766,7 @@
       "config" : { }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperEleven }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperEleven }}",
     "name" : "email",
     "description" : "OpenID Connect built-in scope: email",
     "protocol" : "openid-connect",
@@ -776,7 +776,7 @@
       "consent.screen.text" : "${emailScopeConsentText}"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperTwelve }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwelve }}",
       "name" : "email",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -790,7 +790,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperThirteen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirteen }}",
       "name" : "email verified",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -805,7 +805,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperFourteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFourteen }}",
     "name" : "profile",
     "description" : "OpenID Connect built-in scope: profile",
     "protocol" : "openid-connect",
@@ -815,7 +815,7 @@
       "consent.screen.text" : "${profileScopeConsentText}"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperFifteen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFifteen }}",
       "name" : "family name",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -829,7 +829,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperSixteen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperSixteen }}",
       "name" : "middle name",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -843,7 +843,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperSeventeen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperSeventeen }}",
       "name" : "given name",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -857,7 +857,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperEighteen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperEighteen }}",
       "name" : "website",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -871,7 +871,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperNineteen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperNineteen }}",
       "name" : "username",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -885,7 +885,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwenty }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwenty }}",
       "name" : "profile",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -899,7 +899,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentyone }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentyone }}",
       "name" : "updated at",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -913,7 +913,7 @@
         "jsonType.label" : "long"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentytwo }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentytwo }}",
       "name" : "zoneinfo",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -927,7 +927,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentythree }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentythree }}",
       "name" : "full name",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-full-name-mapper",
@@ -938,7 +938,7 @@
         "userinfo.token.claim" : "true"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentyfour }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentyfour }}",
       "name" : "nickname",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -952,7 +952,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentyfive }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentyfive }}",
       "name" : "birthdate",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -966,7 +966,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentysix }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentysix }}",
       "name" : "picture",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -980,7 +980,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentyseven }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentyseven }}",
       "name" : "gender",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -994,7 +994,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperTwentyeight }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentyeight }}",
       "name" : "locale",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -1009,7 +1009,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperTwentynine }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperTwentynine }}",
     "name" : "address",
     "description" : "OpenID Connect built-in scope: address",
     "protocol" : "openid-connect",
@@ -1019,7 +1019,7 @@
       "consent.screen.text" : "${addressScopeConsentText}"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperThirty }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirty }}",
       "name" : "address",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-address-mapper",
@@ -1037,7 +1037,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperThirtyone }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtyone }}",
     "name" : "offline_access",
     "description" : "OpenID Connect built-in scope: offline_access",
     "protocol" : "openid-connect",
@@ -1046,7 +1046,7 @@
       "display.on.consent.screen" : "true"
     }
   }, {
-    "id" : "\{ uuidProtocolMapperThirtytwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtytwo }}",
     "name" : "phone",
     "description" : "OpenID Connect built-in scope: phone",
     "protocol" : "openid-connect",
@@ -1056,7 +1056,7 @@
       "consent.screen.text" : "${phoneScopeConsentText}"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperThirtythree }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtythree }}",
       "name" : "phone number verified",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -1070,7 +1070,7 @@
         "jsonType.label" : "boolean"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperThirtyfour }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtyfour }}",
       "name" : "phone number",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-attribute-mapper",
@@ -1085,7 +1085,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperThirtyfive }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtyfive }}",
     "name" : "microprofile-jwt",
     "description" : "Microprofile - JWT built-in scope",
     "protocol" : "openid-connect",
@@ -1094,7 +1094,7 @@
       "display.on.consent.screen" : "false"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperThirtysix }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtysix }}",
       "name" : "upn",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-property-mapper",
@@ -1108,7 +1108,7 @@
         "jsonType.label" : "String"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperThirtyseven }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtyseven }}",
       "name" : "groups",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-realm-role-mapper",
@@ -1124,7 +1124,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperThirtyeight }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtyeight }}",
     "name" : "roles",
     "description" : "OpenID Connect scope for add user roles to the access token",
     "protocol" : "openid-connect",
@@ -1134,7 +1134,7 @@
       "consent.screen.text" : "${rolesScopeConsentText}"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperThirtynine }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperThirtynine }}",
       "name" : "realm roles",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-realm-role-mapper",
@@ -1147,14 +1147,14 @@
         "multivalued" : "true"
       }
     }, {
-      "id" : "\{ uuidProtocolMapperForty }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperForty }}",
       "name" : "audience resolve",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-audience-resolve-mapper",
       "consentRequired" : false,
       "config" : { }
     }, {
-      "id" : "\{ uuidProtocolMapperFortyone }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFortyone }}",
       "name" : "client roles",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-usermodel-client-role-mapper",
@@ -1168,7 +1168,7 @@
       }
     } ]
   }, {
-    "id" : "\{ uuidProtocolMapperFortytwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFortytwo }}",
     "name" : "acr",
     "description" : "OpenID Connect scope for add acr (authentication context class reference) to the token",
     "protocol" : "openid-connect",
@@ -1177,7 +1177,7 @@
       "display.on.consent.screen" : "false"
     },
     "protocolMappers" : [ {
-      "id" : "\{ uuidProtocolMapperFortythree }",
+      "id" : "{{ organization.getKeycloakSettings.uuidProtocolMapperFortythree }}",
       "name" : "acr loa level",
       "protocol" : "openid-connect",
       "protocolMapper" : "oidc-acr-mapper",
@@ -1210,7 +1210,7 @@
   "identityProviderMappers" : [ ],
   "components" : {
     "org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy" : [ {
-      "id" : "\{ uuidComponentsOne }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsOne }}",
       "name" : "Allowed Protocol Mapper Types",
       "providerId" : "allowed-protocol-mappers",
       "subType" : "anonymous",
@@ -1219,7 +1219,7 @@
         "allowed-protocol-mapper-types" : [ "saml-user-attribute-mapper", "saml-role-list-mapper", "oidc-usermodel-property-mapper", "oidc-usermodel-attribute-mapper", "saml-user-property-mapper", "oidc-full-name-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-address-mapper" ]
       }
     }, {
-      "id" : "\{ uuidComponentsTwo }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwo }}",
       "name" : "Trusted Hosts",
       "providerId" : "trusted-hosts",
       "subType" : "anonymous",
@@ -1229,7 +1229,7 @@
         "client-uris-must-match" : [ "true" ]
       }
     }, {
-      "id" : "\{ uuidComponentsThree }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsThree }}",
       "name" : "Allowed Protocol Mapper Types",
       "providerId" : "allowed-protocol-mappers",
       "subType" : "authenticated",
@@ -1238,14 +1238,14 @@
         "allowed-protocol-mapper-types" : [ "oidc-full-name-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-user-attribute-mapper", "saml-role-list-mapper", "oidc-usermodel-property-mapper", "oidc-usermodel-attribute-mapper", "oidc-address-mapper", "saml-user-property-mapper" ]
       }
     }, {
-      "id" : "\{ uuidComponentsFour }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsFour }}",
       "name" : "Consent Required",
       "providerId" : "consent-required",
       "subType" : "anonymous",
       "subComponents" : { },
       "config" : { }
     }, {
-      "id" : "\{ uuidComponentsFive }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsFive }}",
       "name" : "Allowed Client Scopes",
       "providerId" : "allowed-client-templates",
       "subType" : "authenticated",
@@ -1254,7 +1254,7 @@
         "allow-default-scopes" : [ "true" ]
       }
     }, {
-      "id" : "\{ uuidComponentsSix }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsSix }}",
       "name" : "Max Clients Limit",
       "providerId" : "max-clients",
       "subType" : "anonymous",
@@ -1263,7 +1263,7 @@
         "max-clients" : [ "200" ]
       }
     }, {
-      "id" : "\{ uuidComponentsSeven }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsSeven }}",
       "name" : "Allowed Client Scopes",
       "providerId" : "allowed-client-templates",
       "subType" : "anonymous",
@@ -1272,7 +1272,7 @@
         "allow-default-scopes" : [ "true" ]
       }
     }, {
-      "id" : "\{ uuidComponentsEight }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsEight }}",
       "name" : "Full Scope Disabled",
       "providerId" : "scope",
       "subType" : "anonymous",
@@ -1280,7 +1280,7 @@
       "config" : { }
     } ],
     "org.keycloak.keys.KeyProvider" : [ {
-      "id" : "\{ uuidComponentsNine }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsNine }}",
       "name" : "rsa-generated",
       "providerId" : "rsa-generated",
       "subComponents" : { },
@@ -1291,17 +1291,17 @@
         "priority" : [ "100" ]
       }
     }, {
-      "id" : "\{ uuidComponentsTen }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsTen }}",
       "name" : "aes-generated",
       "providerId" : "aes-generated",
       "subComponents" : { },
       "config" : {
-        "kid" : [ "\{ uuidConfigOne }" ],
+        "kid" : [ "{{ organization.getKeycloakSettings.uuidConfigOne }}" ],
         "secret" : [ "1xVP64XTnyoSggj-EK0uiA" ],
         "priority" : [ "100" ]
       }
     }, {
-      "id" : "\{ uuidComponentsEleven }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsEleven }}",
       "name" : "rsa-enc-generated",
       "providerId" : "rsa-enc-generated",
       "subComponents" : { },
@@ -1313,12 +1313,12 @@
         "algorithm" : [ "RSA-OAEP" ]
       }
     }, {
-      "id" : "\{ uuidComponentsTwelve }",
+      "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwelve }}",
       "name" : "hmac-generated",
       "providerId" : "hmac-generated",
       "subComponents" : { },
       "config" : {
-        "kid" : [ "\{ uuidConfigTwo }" ],
+        "kid" : [ "{{ organization.getKeycloakSettings.uuidConfigTwo }}" ],
         "secret" : [ "c1499CeksR2ilq7aZ5oG6DOSkALSyxyTGlPHMGU_8NtudfZuXotx-3nj8G3kSe_HknD-O3sV70erJmQcbL6xfA" ],
         "priority" : [ "100" ],
         "algorithm" : [ "HS256" ]
@@ -1328,7 +1328,7 @@
   "internationalizationEnabled" : false,
   "supportedLocales" : [ ],
   "authenticationFlows" : [ {
-    "id" : "\{ uuidComponentsThirteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirteen }}",
     "alias" : "Account verification options",
     "description" : "Method with which to verity the existing account",
     "providerId" : "basic-flow",
@@ -1350,7 +1350,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsFourteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsFourteen }}",
     "alias" : "Authentication Options",
     "description" : "Authentication options.",
     "providerId" : "basic-flow",
@@ -1379,7 +1379,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsFifteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsFifteen }}",
     "alias" : "Browser - Conditional OTP",
     "description" : "Flow to determine if the OTP is required for the authentication",
     "providerId" : "basic-flow",
@@ -1401,7 +1401,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsSixteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsSixteen }}",
     "alias" : "Direct Grant - Conditional OTP",
     "description" : "Flow to determine if the OTP is required for the authentication",
     "providerId" : "basic-flow",
@@ -1423,7 +1423,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsSeventeen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsSeventeen }}",
     "alias" : "First broker login - Conditional OTP",
     "description" : "Flow to determine if the OTP is required for the authentication",
     "providerId" : "basic-flow",
@@ -1445,7 +1445,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsEighteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsEighteen }}",
     "alias" : "Handle Existing Account",
     "description" : "Handle what to do if there is existing account with same email/username like authenticated identity provider",
     "providerId" : "basic-flow",
@@ -1467,7 +1467,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsNineteen }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsNineteen }}",
     "alias" : "Reset - Conditional OTP",
     "description" : "Flow to determine if the OTP should be reset or not. Set to REQUIRED to force.",
     "providerId" : "basic-flow",
@@ -1489,7 +1489,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwenty }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwenty }}",
     "alias" : "User creation or linking",
     "description" : "Flow for the existing/non-existing user alternatives",
     "providerId" : "basic-flow",
@@ -1512,7 +1512,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentyone }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentyone }}",
     "alias" : "Verify Existing Account by Re-authentication",
     "description" : "Reauthentication of existing account",
     "providerId" : "basic-flow",
@@ -1534,7 +1534,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentytwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentytwo }}",
     "alias" : "browser",
     "description" : "browser based authentication",
     "providerId" : "basic-flow",
@@ -1570,7 +1570,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentythree }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentythree }}",
     "alias" : "clients",
     "description" : "Base authentication for clients",
     "providerId" : "client-flow",
@@ -1606,7 +1606,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentyfour }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentyfour }}",
     "alias" : "direct grant",
     "description" : "OpenID Connect Resource Owner Grant",
     "providerId" : "basic-flow",
@@ -1635,7 +1635,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentyfive }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentyfive }}",
     "alias" : "docker auth",
     "description" : "Used by Docker clients to authenticate against the IDP",
     "providerId" : "basic-flow",
@@ -1650,7 +1650,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentysix }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentysix }}",
     "alias" : "first broker login",
     "description" : "Actions taken after first broker login with identity provider account, which is not yet linked to any Keycloak account",
     "providerId" : "basic-flow",
@@ -1673,7 +1673,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentyseven }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentyseven }}",
     "alias" : "forms",
     "description" : "Username, password, otp and other auth forms.",
     "providerId" : "basic-flow",
@@ -1695,7 +1695,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentyeight }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentyeight }}",
     "alias" : "http challenge",
     "description" : "An authentication flow based on challenge-response HTTP Authentication Schemes",
     "providerId" : "basic-flow",
@@ -1717,7 +1717,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsTwentynine }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsTwentynine }}",
     "alias" : "registration",
     "description" : "registration flow",
     "providerId" : "basic-flow",
@@ -1733,7 +1733,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsThirty }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirty }}",
     "alias" : "registration form",
     "description" : "registration form",
     "providerId" : "form-flow",
@@ -1769,7 +1769,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsThirtyone }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirtyone }}",
     "alias" : "reset credentials",
     "description" : "Reset credentials for a user if they forgot their password or something",
     "providerId" : "basic-flow",
@@ -1805,7 +1805,7 @@
       "userSetupAllowed" : false
     } ]
   }, {
-    "id" : "\{ uuidComponentsThirtytwo }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirtytwo }}",
     "alias" : "saml ecp",
     "description" : "SAML ECP Profile Authentication Flow",
     "providerId" : "basic-flow",
@@ -1821,13 +1821,13 @@
     } ]
   } ],
   "authenticatorConfig" : [ {
-    "id" : "\{ uuidComponentsThirtythree }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirtythree }}",
     "alias" : "create unique user config",
     "config" : {
       "require.password.update.after.registration" : "false"
     }
   }, {
-    "id" : "\{ uuidComponentsThirtyfour }",
+    "id" : "{{ organization.getKeycloakSettings.uuidComponentsThirtyfour }}",
     "alias" : "review profile config",
     "config" : {
       "update.profile.on.first.login" : "missing"

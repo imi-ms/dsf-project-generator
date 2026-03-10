@@ -14,7 +14,7 @@ public class DsfProjectDTO {
                          DsfVersion version,
                          List<DsfOrganizationDTO> organizations,
                          String outputPath) {
-        this.projectName = projectName;
+        this.projectName = projectName.toLowerCase();
         this.projectOrganization = projectOrganization;
         this.dsfVersion = version.getVersion();
         this.organizations = organizations;
@@ -22,11 +22,15 @@ public class DsfProjectDTO {
     }
 
     public String getProjectName() {
-        return projectName;
+        return this.projectName;
+    }
+
+    public String getProjectNameDash() {
+        return this.projectName.replaceAll("_", "-");
     }
 
     public String getProjectOrganization() {
-        return projectOrganization;
+        return this.projectOrganization;
     }
 
     public List<DsfOrganizationDTO> getOrganizations() {
