@@ -1,6 +1,7 @@
 package shared;
 
 import java.util.List;
+import java.util.UUID;
 
 public class DsfProjectDTO {
     private final String projectName;
@@ -8,6 +9,7 @@ public class DsfProjectDTO {
     private final String dsfVersion; //TODO: Move to Orga
     private List<DsfOrganizationDTO> organizations;
     private String outputPath;
+    private String parentOrganizationId;
 
     public DsfProjectDTO(String projectName,
                          String projectOrganization,
@@ -19,6 +21,7 @@ public class DsfProjectDTO {
         this.dsfVersion = version.getVersion();
         this.organizations = organizations;
         this.outputPath = outputPath;
+        this.parentOrganizationId = UUID.randomUUID().toString();
     }
 
     public String getProjectName() {
@@ -58,16 +61,69 @@ public class DsfProjectDTO {
     }
 
     public String getDomain() {
-        return this.projectOrganization.substring(0, projectOrganization.lastIndexOf(".")).replaceAll("-","_");
+        return this.projectOrganization.substring(0, projectOrganization.lastIndexOf("."))
+                .replaceAll("-","_");
     }
 
     public String getDomainName() {
-        return this.projectOrganization.substring(projectOrganization.lastIndexOf(".") + 1,
-                projectOrganization.length());
+        return this.projectOrganization.substring(this.projectOrganization.lastIndexOf(".") + 1);
     }
 
-    public String generateProcessFolderName() {
+    public String getProcessFolderName() {
         if (this.getProjectName().contains("-process")) return this.getProjectName();
         return this.getProjectName() + "-process";
+    }
+
+    public String getProcessBaseFolderName() {
+        return this.getOutputPath() + this.getProcessFolderName();
+    }
+
+    public String getDevSetupBaseFolderName() {
+        return this.getOutputPath() + "dev-setup";
+    }
+
+    public String getProcessBaseFolderTemplateName() {
+        return this.getProcessBaseFolderName() + "/templates";
+    }
+
+    public String getProcessBaseFolderMainName() {
+        return this.getProcessBaseFolderName() + "/src/main";
+    }
+
+    public String getProcessBaseFolderMainResourcesName() {
+        return this.getProcessBaseFolderMainName() + "/resources";
+    }
+
+    public String getProcessBaseFolderTestName() {
+        return this.getProcessBaseFolderName() + "/test";
+    }
+
+    public String getProcessBaseFolderTestResourcesName() {
+        return this.getProcessBaseFolderTestName() + "/resources";
+    }
+
+    public String getProcessPackageName() {
+        return this.getDomainName() + "." + this.getDomain() + "." +
+                "process" + "." + this.getProjectName().replace("-process", "");
+    }
+
+    public String getProcessPackageNameFolder() {
+        return this.getProcessPackageName().replace(".", "/");
+    }
+
+    public String getProcessOrganizationName() {
+        return this.getDomain() + "." + this.getDomainName();
+    }
+
+    public String getProcessOrganizationNameConcat() {
+        return this.getDomain() + this.getDomainName();
+    }
+
+    public String getProcessNameOrganization() {
+        return this.getDomainName() + "." + this.getDomain();
+    }
+
+    public String getParentOrganizationId() {
+        return this.parentOrganizationId;
     }
 }

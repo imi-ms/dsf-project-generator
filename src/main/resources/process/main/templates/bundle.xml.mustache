@@ -2,7 +2,7 @@
 	<type value="transaction"/>
 	{{#project.organizations}}
 	<entry>
-		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+		<fullUrl value="urn:uuid:{{ getOrganizationId }}"/>
 		<resource>
 			<Organization xmlns="http://hl7.org/fhir">
 				<meta>
@@ -22,7 +22,7 @@
 				<active value="true"/>
 				<name value="Test {{ name.toUpperCase }}"/>
 				<endpoint>
-					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+					<reference value="urn:uuid:{{ getEndpointId }}"/>
 					<type value="Endpoint"/>
 				</endpoint>
 			</Organization>
@@ -35,7 +35,7 @@
 	{{/project.organizations}}
 	{{#project.organizations}}
 	<entry>
-		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+		<fullUrl value="urn:uuid:{{ getEndpointId }}"/>
 		<resource>
 			<Endpoint xmlns="http://hl7.org/fhir">
 				<meta>
@@ -56,7 +56,7 @@
 				</connectionType>
 				<name value="Test {{ name.toUpperCase }} Endpoint"/>
 				<managingOrganization>
-					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+					<reference value="urn:uuid:{{ getOrganizationId }}"/>
 					<type value="Organization"/>
 				</managingOrganization>
 				<payloadType>
@@ -77,7 +77,7 @@
 	</entry>
     {{/project.organizations}}
 	<entry>
-		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%project.projectOrganization%>_id }"/><%={{ }}=%>
+		<fullUrl value="urn:uuid:{{ project.getParentOrganizationId }}"/>
 		<resource>
 			<Organization xmlns="http://hl7.org/fhir">
 				<meta>
@@ -102,7 +102,7 @@
 	</entry>
 	{{#project.organizations}}
 	<entry>
-		{{=<% %>=}}<fullUrl value="urn:uuid:{ <%name%>_id_3 }"/><%={{ }}=%>
+		<fullUrl value="urn:uuid:{{ getOrganizationAffiliationId }}"/>
 		<resource>
 			<OrganizationAffiliation xmlns="http://hl7.org/fhir">
 				<meta>
@@ -114,11 +114,11 @@
 				</meta>
 				<active value="true"/>
 				<organization>
-					{{=<% %>=}}<reference value="urn:uuid:{ <%project.projectOrganization%>_id }"/><%={{ }}=%>
+					<reference value="urn:uuid:{{ project.getParentOrganizationId }}"/>
 					<type value="Organization"/>
 				</organization>
 				<participatingOrganization>
-					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_1 }"/><%={{ }}=%>
+					<reference value="urn:uuid:{{ getOrganizationId }}"/>
 					<type value="Organization"/>
 				</participatingOrganization>
 				<code>
@@ -128,7 +128,7 @@
 					</coding>
 				</code>
 				<endpoint>
-					{{=<% %>=}}<reference value="urn:uuid:{ <%name%>_id_2 }"/><%={{ }}=%>
+					<reference value="urn:uuid:{{ getEndpointId }}"/>
 					<type value="Endpoint"/>
 				</endpoint>
 			</OrganizationAffiliation>

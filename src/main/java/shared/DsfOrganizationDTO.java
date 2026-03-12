@@ -1,7 +1,9 @@
 package shared;
 
 import java.util.Locale;
-import utils.PasswordGenerator;
+import java.util.UUID;
+import utils.helper.PasswordGeneratorHelper;
+
 
 public class DsfOrganizationDTO {
 
@@ -12,7 +14,10 @@ public class DsfOrganizationDTO {
     private String fhirOIDCSecret;
     private String bpeOIDCSecret;
     private IpConfigDTO ipConfig;
-    private KeycloakSettingsDTO keycloakSettings;
+    private final KeycloakSettingsDTO keycloakSettings;
+    private final String organizationId;
+    private final String organizationAffiliationId;
+    private final String endpointId;
 
     public DsfOrganizationDTO(Builder builder) {
         this.name = builder.name;
@@ -23,6 +28,9 @@ public class DsfOrganizationDTO {
         this.fhirOIDCSecret = builder.fhirOIDCSecret;
         this.bpeOIDCSecret = builder.bpeOIDCSecret;
         this.keycloakSettings = new KeycloakSettingsDTO();
+        this.organizationId = UUID.randomUUID().toString();
+        this.organizationAffiliationId = UUID.randomUUID().toString();
+        this.endpointId = UUID.randomUUID().toString();
     }
 
     public String getNameUC() {
@@ -91,6 +99,18 @@ public class DsfOrganizationDTO {
         return this.keycloakSettings;
     }
 
+    public String getOrganizationId() {
+        return organizationId;
+    }
+
+    public String getOrganizationAffiliationId() {
+        return organizationAffiliationId;
+    }
+
+    public String getEndpointId() {
+        return endpointId;
+    }
+
 
 
     public static class Builder {
@@ -129,7 +149,7 @@ public class DsfOrganizationDTO {
         }
 
         private void generateSecrets() {
-            PasswordGenerator secretGenerator = new PasswordGenerator();
+            PasswordGeneratorHelper secretGenerator = new PasswordGeneratorHelper();
             this.fhirOIDCSecret = secretGenerator.generateSecret();
             this.bpeOIDCSecret = secretGenerator.generateSecret();
         }

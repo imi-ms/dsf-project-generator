@@ -5,43 +5,44 @@ import shared.DsfOrganizationDTO;
 import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
 import shared.DsfVersion;
-import utils.*;
-
-import java.io.*;
+import utils.ProjectGenerator;
+import utils.generator.*;
+import utils.generator.base.AbstractGenerator;
+import utils.helper.InputCheckHelper;
+import utils.helper.NetworkSelectionHelper;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        NetworkHandler networkHandler = new NetworkHandler();
+        NetworkSelectionHelper networkSelectionHelper = new NetworkSelectionHelper();
         DsfOrganizationDTO dic = new DsfOrganizationDTO.Builder().name("dic")
-            .role(DsfOrganizationRole.DIC).ipConfig(networkHandler.getAndRemoveValidIp()).build();
+            .role(DsfOrganizationRole.DIC).ipConfig(networkSelectionHelper.getAndRemoveValidIp()).build();
         DsfOrganizationDTO hrp = new DsfOrganizationDTO.Builder().name("hrp")
-            .role(DsfOrganizationRole.HRP).ipConfig(networkHandler.getAndRemoveValidIp()).build();
+            .role(DsfOrganizationRole.HRP).ipConfig(networkSelectionHelper.getAndRemoveValidIp()).build();
         DsfOrganizationDTO cos = new DsfOrganizationDTO.Builder().name("cos")
-            .role(DsfOrganizationRole.COS).ipConfig(networkHandler.getAndRemoveValidIp()).build();
+            .role(DsfOrganizationRole.COS).ipConfig(networkSelectionHelper.getAndRemoveValidIp()).build();
         List<DsfOrganizationDTO> organizations = new ArrayList<>();
         organizations.add(dic);
         organizations.add(hrp);
         organizations.add(cos);
 
-        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO(InputChecker.checkIfValidProjectName("Test"),
-                InputChecker.checkIfDomainExists("imi.ms"),
+        DsfProjectDTO dsfProjectDTO = new DsfProjectDTO(InputCheckHelper.checkIfValidProjectName("Test"),
+                InputCheckHelper.checkIfDomainExists("imi.ms"),
                 DsfVersion.V_2_0_1, organizations,
                 "./output/");
-
-
-//        MustacheFactory mf = new DefaultMustacheFactory();
-//        Mustache mustache = mf.compile("template.mustache");
-//        mustache.execute(new PrintWriter(System.out), new Example()).flush();
-
-        FolderGenerator gen = new FolderGenerator();
-        gen.generateProjectFiles(dsfProjectDTO);
-        SecretsGenerator.generateSecrets(dsfProjectDTO);
-        DockerGenerator.generateDockerFile(dsfProjectDTO);
-        DbGenerator.generateDb(dsfProjectDTO);
-        KeycloakGenerator.generateKeycloakImport(dsfProjectDTO);
-        ProxyGenerator.generateProxy(dsfProjectDTO);
-        PomGenerator.generatePomFiles(dsfProjectDTO);
-        ProcessGenerator.generateProcess(dsfProjectDTO);
+        
+        List<AbstractGenerator> generators = List.of(new FolderGenerator(), 
+                new SecretsGenerator(), 
+                new DockerGenerator(), 
+                new DbGenerator(), 
+                new KeycloakGenerator(), 
+                new ProxyGenerator(), 
+                new PomGenerator(), 
+                new ProcessGenerator(), 
+                new DevEnvGenerator(), 
+                new AllowListGenerator());
+        
+        ProjectGenerator projectGenerator = new ProjectGenerator(generators);
+        projectGenerator.generate(dsfProjectDTO);
     }
 }
