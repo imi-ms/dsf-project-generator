@@ -2,12 +2,7 @@ package utils.generator;
 
 import shared.DsfProjectDTO;
 import utils.generator.base.AbstractGenerator;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.attribute.PosixFilePermission;
 import java.util.HashMap;
-import java.util.Set;
 
 
 public class DbGenerator extends AbstractGenerator {

@@ -15,8 +15,6 @@ public class FolderGenerator extends AbstractGenerator {
 
     public boolean generate(DsfProjectDTO dsfProjectDTO) {
         try {
-            String gitKeep = ".gitkeep";
-
             // 1.) Create project directory - if not exists, else delete
             File projectFolder = new File(dsfProjectDTO.getOutputPath());
             this.deleteDirectory(projectFolder);
