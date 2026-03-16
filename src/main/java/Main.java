@@ -5,7 +5,7 @@ import shared.DsfOrganizationDTO;
 import shared.DsfOrganizationRole;
 import shared.DsfProjectDTO;
 import shared.DsfVersion;
-import utils.ProjectGenerator;
+import utils.generator.ProjectGenerator;
 import utils.generator.*;
 import utils.generator.base.AbstractGenerator;
 import utils.helper.InputCheckHelper;
