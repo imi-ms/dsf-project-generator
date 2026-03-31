@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.util.HashMap;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-
 public abstract class AbstractGenerator {
 
     protected final MustacheFactory mf;
@@ -28,10 +27,11 @@ public abstract class AbstractGenerator {
             Mustache mustache = this.mf.compile(source);
             StringWriter writer = new StringWriter();
             mustache.execute(writer, config).flush();
-            File proxyOrganizationFile = new File(target);
-            String normalized = writer.toString().replace("\r\n", "\n")
+            File file = new File(target);
+            String normalized = writer.toString()
+                    .replace("\r\n", "\n")
                     .replace("\r", "\n");
-            Files.write(proxyOrganizationFile.toPath(), normalized.getBytes());
+            Files.write(file.toPath(), normalized.getBytes());
             return true;
         } catch (Exception e) {
             throw new Exception(e);

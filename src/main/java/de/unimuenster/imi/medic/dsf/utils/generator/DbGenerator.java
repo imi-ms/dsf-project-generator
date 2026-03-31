@@ -4,7 +4,6 @@ import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
 import java.util.HashMap;
 
-
 public class DbGenerator extends AbstractGenerator {
     private final String dbFile;
     private final String dbFolder;
@@ -23,6 +22,7 @@ public class DbGenerator extends AbstractGenerator {
             this.generateTemplate(config, this.dbFolder, this.dbFile, dsfProjectDTO.getDevSetupBaseFolderName());
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }

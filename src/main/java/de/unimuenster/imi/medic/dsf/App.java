@@ -1,8 +1,4 @@
-package de.unimuenster.imi.medic.dsf;/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package de.unimuenster.imi.medic.dsf;
 
 import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationRole;
@@ -14,12 +10,7 @@ import de.unimuenster.imi.medic.dsf.utils.helper.InputCheckHelper;
 import de.unimuenster.imi.medic.dsf.utils.helper.NetworkSelectionHelper;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.*;
 import java.util.stream.IntStream;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -48,7 +39,7 @@ public class App extends Application {
     private final NetworkSelectionHelper networkSelectionHelper = new NetworkSelectionHelper();
     private final List<Character> charArray = IntStream.rangeClosed('a', 'z')
         .mapToObj(c -> (char) c)
-        .collect(Collectors.toList());
+        .toList();
 
     public static void main(String[] args) {
         launch(args);
@@ -70,10 +61,10 @@ public class App extends Application {
     }
 
     private void drawStartDialog(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/Main.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("DSF Initializr");
+        stage.setTitle("DSF Project Generator");
         stage.show();
 
         Button pathButton = (Button) scene.lookup("#pathButton");
@@ -91,7 +82,11 @@ public class App extends Application {
 
         ChoiceBox<Integer> numberOfOrganizations = (ChoiceBox<Integer>) scene.lookup(
             "#numberOfOrganizations");
-        ObservableList<Integer> availableNumbers = FXCollections.observableArrayList(2, 3, 4, 5);
+        List<Integer> numberOrganizations = new ArrayList<>();
+        for (int i = 1; i <= this.networkSelectionHelper.getIpCount(); i++) {
+            numberOrganizations.add(i);
+        }
+        ObservableList<Integer> availableNumbers = FXCollections.observableArrayList(numberOrganizations);
         numberOfOrganizations.setItems(availableNumbers);
         numberOfOrganizations.setValue(2);
         setOrganizations();
@@ -140,7 +135,7 @@ public class App extends Application {
             label1.setText("Name:");
 
             TextField tf = new TextField();
-            tf.setText("org" + charArray.get(i));
+            tf.setText("dic" + charArray.get(i));
             tf.setPrefSize(250, 26);
             tf.setId("orgaName_" + i);
 
@@ -220,8 +215,6 @@ public class App extends Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
     private List<DsfOrganizationDTO> createOrganizationDTOsForNumberOfOrganizations(
@@ -254,11 +247,10 @@ public class App extends Application {
     }
 
     private void setSuccessToStage() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/Success.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/Success.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
     }
-
 
     private void setPrimaryStage(Stage stage) {
         App.stage = stage;
@@ -267,6 +259,4 @@ public class App extends Application {
     private void setPrimaryScene(Scene scene) {
         App.scene = scene;
     }
-
-
 }

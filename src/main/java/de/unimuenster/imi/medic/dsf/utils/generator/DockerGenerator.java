@@ -2,9 +2,7 @@ package de.unimuenster.imi.medic.dsf.utils.generator;
 
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
-
 import java.util.HashMap;
-
 
 public class DockerGenerator extends AbstractGenerator {
 
@@ -14,18 +12,20 @@ public class DockerGenerator extends AbstractGenerator {
     public DockerGenerator() {
         super();
         this.dockerFile = "docker-compose.yml.mustache";
-        this.dockerFolder = "src/main/resources";
+        this.dockerFolder = "src/main/resources/build";
     }
 
     public boolean generate(DsfProjectDTO dsfProjectDTO)  {
         try {
             HashMap<String, Object> config = new HashMap<>();
             config.put("project", dsfProjectDTO);
-            this.generateTemplate(config, this.dockerFolder,
+            this.generateTemplate(config,
+                    this.dockerFolder,
                     this.dockerFile,
                     dsfProjectDTO.getDevSetupBaseFolderName());
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }

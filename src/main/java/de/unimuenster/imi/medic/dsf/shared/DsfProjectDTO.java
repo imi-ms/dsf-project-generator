@@ -75,11 +75,11 @@ public class DsfProjectDTO {
     }
 
     public String getProcessBaseFolderName() {
-        return this.getOutputPath() + this.getProcessFolderName();
+        return this.getOutputPath() + "/" + this.getProcessFolderName();
     }
 
     public String getDevSetupBaseFolderName() {
-        return this.getOutputPath() + "dev-setup";
+        return this.getOutputPath() + "/dev-setup";
     }
 
     public String getProcessBaseFolderTemplateName() {
@@ -103,12 +103,13 @@ public class DsfProjectDTO {
     }
 
     public String getProcessPackageName() {
-        return this.getDomainName() + "." + this.getDomain() + "." +
-                "process" + "." + this.getProjectName().replace("-process", "");
+        return this.getDomainName().replace("-", "_") + "." + this.getDomain() + "." +
+                "process" + "." + this.getProjectName().replace("-process", "")
+                .replace("-", "_");
     }
 
     public String getProcessPackageNameFolder() {
-        return this.getProcessPackageName().replace(".", "/");
+        return this.getProcessPackageName().replace(".", "/").replace("-", "_");
     }
 
     public String getProcessOrganizationName() {

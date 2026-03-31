@@ -3,9 +3,7 @@ package de.unimuenster.imi.medic.dsf.utils.generator;
 import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
-
 import java.util.HashMap;
-
 
 public class KeycloakGenerator extends AbstractGenerator {
 
@@ -30,6 +28,7 @@ public class KeycloakGenerator extends AbstractGenerator {
                                organization.getNamespaceDash() + ".json");
             }
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
         return true;

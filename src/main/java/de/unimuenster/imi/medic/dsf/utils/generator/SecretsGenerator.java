@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
 
-
 public class SecretsGenerator extends AbstractGenerator {
 
     private final List<String> secretFiles;
@@ -47,6 +46,7 @@ public class SecretsGenerator extends AbstractGenerator {
             }
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }

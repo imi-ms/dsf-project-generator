@@ -3,8 +3,6 @@ package de.unimuenster.imi.medic.dsf.utils.generator;
 import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
-
-
 import java.io.File;
 import java.util.List;
 
@@ -23,8 +21,6 @@ public class FolderGenerator extends AbstractGenerator {
             this.deleteDirectory(projectFolder);
 
             if (!projectFolder.mkdirs()) return false;
-
-            projectFolder.mkdirs();
 
             // 2.) Create main directories
             // 2.1) Create browser-certs
@@ -80,9 +76,7 @@ public class FolderGenerator extends AbstractGenerator {
 
             // 2.5.1) Create main folder
             File processSrcMainFolder = this.createFolder(processSrcFolder, "main");
-            String packageFolder = "java" + File.separator + dsfProjectDTO.getDomainName() + File.separator +
-                    dsfProjectDTO.getDomain() + File.separator + "process" + File.separator +
-                    dsfProjectDTO.getProjectName().replace("-process", "");
+            String packageFolder = "java/" + dsfProjectDTO.getProcessPackageNameFolder();
             File processSrcJavaFolder = this.createFolders(processSrcMainFolder, packageFolder);
             List<String> processFolders = List.of("listener", "message", "service", "spring/config");
             for (String process : processFolders) {
@@ -104,21 +98,19 @@ public class FolderGenerator extends AbstractGenerator {
 
             // 2.5.3) Create test folder
             File processTestFolder = this.createFolder(processFolder, "test");
-            File processTestBpeJavaFolders = this.createFolders(processTestFolder, packageFolder +
-                    File.separator + "bpe");
+            File processTestBpeJavaFolders = this.createFolders(processTestFolder, packageFolder + "/bpe");
             File processTestFhirJavaFolders = this.createFolders(processTestFolder, packageFolder +
-                    File.separator + "fhir/profile");
+                    "/fhir/profile");
             File processTestResourcesFolder = this.createFolder(processTestFolder, "resources");
             return true;
         } catch (Exception e) {
-            File projectFolder = new File(dsfProjectDTO.getOutputPath());
-            this.deleteDirectory(projectFolder);
+            System.out.println(e.getMessage());
             return  false;
         }
     }
 
     private File createFolder(File directory, String folder) throws Exception {
-        File newDirectory = new File(directory + File.separator, folder);
+        File newDirectory = new File(directory + "/", folder);
         if (!newDirectory.mkdir()) throw new Exception("Folder could not be created.");
         return newDirectory;
     }

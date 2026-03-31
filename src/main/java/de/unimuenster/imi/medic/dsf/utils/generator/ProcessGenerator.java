@@ -1,10 +1,9 @@
 package de.unimuenster.imi.medic.dsf.utils.generator;
 
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
-
 import java.util.*;
-
 
 public class ProcessGenerator extends AbstractGenerator {
 
@@ -72,14 +71,16 @@ public class ProcessGenerator extends AbstractGenerator {
                 this.generateTemplate(config,
                         this.mainResourcesFolder + "/java",
                         java,
-                        dsfProjectDTO.getProcessBaseFolderMainName() + "/java/" + dsfProjectDTO.getProcessPackageNameFolder());
+                        dsfProjectDTO.getProcessBaseFolderMainName() + "/java/"
+                                + dsfProjectDTO.getProcessPackageNameFolder());
             }
 
             for (String testJava : this.processTestJavaFiles) {
                 this.generateTemplate(config,
                         this.processTestFolder + "/java",
                         testJava,
-                        dsfProjectDTO.getProcessBaseFolderTestName() + "/java/" + dsfProjectDTO.getProcessPackageNameFolder());
+                        dsfProjectDTO.getProcessBaseFolderTestName() + "/java/"
+                                + dsfProjectDTO.getProcessPackageNameFolder());
             }
 
             this.copyFile(this.processTestFolder + "/resources" ,
@@ -87,6 +88,7 @@ public class ProcessGenerator extends AbstractGenerator {
                     dsfProjectDTO.getProcessBaseFolderTestResourcesName() + "/" + this.processTestLogger);
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
 

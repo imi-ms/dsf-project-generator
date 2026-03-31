@@ -1,12 +1,9 @@
 package de.unimuenster.imi.medic.dsf.utils.generator;
 
-
 import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
-
 import java.util.HashMap;
-
 
 public class ProxyGenerator extends AbstractGenerator {
 
@@ -34,6 +31,7 @@ public class ProxyGenerator extends AbstractGenerator {
             this.copyFile(this.proxyFolder, this.proxyFile, devSetupBaseFolder + "/" + this.proxyFile);
             return true;
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
     }

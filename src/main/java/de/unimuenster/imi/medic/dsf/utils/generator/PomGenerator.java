@@ -4,7 +4,6 @@ import java.util.HashMap;
 import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
 import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
 
-
 public class PomGenerator extends AbstractGenerator {
 
     private final String mainPom;
@@ -15,7 +14,7 @@ public class PomGenerator extends AbstractGenerator {
         super();
         this.mainPom = "main-pom.xml.mustache";
         this.processPom = "pom.xml.mustache";
-        this.pomFolder = "src/main/resources";
+        this.pomFolder = "src/main/resources/build";
     }
 
     @Override

@@ -26,7 +26,7 @@
       <ChoiceBox id="numberOfOrganizations" layoutX="171.0" layoutY="301.0" prefHeight="26.0" prefWidth="207.0" />
       <ImageView fitHeight="115.0" fitWidth="294.0" layoutX="278.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/logo.png" />
+            <Image url="@../img/logo.png" />
          </image>
       </ImageView>
       <VBox id="orgaBox" alignment="CENTER" layoutX="37.0" layoutY="370.0" prefHeight="304.0" prefWidth="749.0" style="-fx-border-image-width: 1px; -fx-border-style: solid; -fx-border-radius: 5px;">
@@ -34,7 +34,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Label layoutX="336.0" layoutY="123.0" text="Project Initializr" textFill="#336d90">
+      <Label layoutX="336.0" layoutY="123.0" text="DSF Project Generator" textFill="#336d90">
          <font>
             <Font size="22.0" />
          </font>

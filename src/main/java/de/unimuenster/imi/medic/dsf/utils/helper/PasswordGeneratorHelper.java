@@ -1,6 +1,5 @@
 package de.unimuenster.imi.medic.dsf.utils.helper;
 
-
 import java.util.List;
 import org.passay.CharacterData;
 import org.passay.CharacterRule;
@@ -44,6 +43,4 @@ public class PasswordGeneratorHelper {
     public String generateSecret() {
         return generateSecret(SECRET_LENGTH);
     }
-
-
 }

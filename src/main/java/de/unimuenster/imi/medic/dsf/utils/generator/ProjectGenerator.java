@@ -5,7 +5,6 @@ import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
 import java.io.File;
 import java.util.List;
 
-
 public class ProjectGenerator extends AbstractGenerator {
 
     private final List<AbstractGenerator> generators;
@@ -19,7 +18,10 @@ public class ProjectGenerator extends AbstractGenerator {
     public boolean generate(DsfProjectDTO dsfProjectDTO) {
         for (AbstractGenerator generator : this.generators) {
             if (!generator.generate(dsfProjectDTO)) {
-                this.deleteDirectory(new File(dsfProjectDTO.getOutputPath()));
+                System.out.println("Error while generating project." + generator.getClass().getSimpleName());
+                File projectFolder = new File(dsfProjectDTO.getOutputPath());
+                this.deleteDirectory(projectFolder);
+                projectFolder.mkdirs();
                 return false;
             }
         }

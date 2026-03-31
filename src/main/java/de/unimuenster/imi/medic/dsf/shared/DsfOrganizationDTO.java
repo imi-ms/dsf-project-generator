@@ -3,8 +3,6 @@ package de.unimuenster.imi.medic.dsf.shared;
 import java.util.Locale;
 import java.util.UUID;
 import de.unimuenster.imi.medic.dsf.utils.helper.PasswordGeneratorHelper;
-import de.unimuenster.imi.medic.dsf.shared.KeycloakSettingsDTO;
-
 
 public class DsfOrganizationDTO {
 
@@ -12,7 +10,7 @@ public class DsfOrganizationDTO {
     private String nameUC;
     private String namespace;
     private DsfOrganizationRole role;
-    private String dsfVersion;
+    private String orgaDsfVersion;
     private String fhirOIDCSecret;
     private String bpeOIDCSecret;
     private IpConfigDTO ipConfig;
@@ -26,7 +24,7 @@ public class DsfOrganizationDTO {
         this.setNameUC();
         this.setNamespace();
         this.role = builder.role;
-        this.dsfVersion = builder.dsfVersion;
+        this.orgaDsfVersion = builder.dsfVersion;
         this.ipConfig = builder.ipConfig;
         this.fhirOIDCSecret = builder.fhirOIDCSecret;
         this.bpeOIDCSecret = builder.bpeOIDCSecret;
@@ -67,11 +65,19 @@ public class DsfOrganizationDTO {
     }
 
     public DsfOrganizationRole getRole() {
-        return role;
+        return this.role;
     }
 
     public void setRole(DsfOrganizationRole role) {
         this.role = role;
+    }
+
+    public String getOrgaDsfVersion() {
+        return this.orgaDsfVersion;
+    }
+
+    public void setOrgaDsfVersion(String orgaDsfVersion) {
+        this.orgaDsfVersion = orgaDsfVersion;
     }
 
     public IpConfigDTO getIpConfig() {

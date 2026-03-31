@@ -1,6 +1,5 @@
 package de.unimuenster.imi.medic.dsf.utils.helper;
 
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.regex.Pattern;
@@ -24,6 +23,7 @@ public class InputCheckHelper {
     }
 
     public static String checkIfValidOrganizationName(String organizationName) {
-        return organizationName.replaceAll("[^a-zA-Z-.]", "").toLowerCase();
+        return organizationName.replaceAll("[^a-zA-Z-.]", "")
+                .replace("org", "").toLowerCase();
     }
 }

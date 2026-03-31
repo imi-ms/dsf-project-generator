@@ -1,6 +1,5 @@
 package de.unimuenster.imi.medic.dsf.utils.helper;
 
-
 import de.unimuenster.imi.medic.dsf.shared.IpConfigDTO;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -61,7 +60,7 @@ public class NetworkSelectionHelper {
 
          */
         if (this.ipConfigs.isEmpty()) { return null; }
-        return this.ipConfigs.removeFirst();
+        return this.ipConfigs.remove(0);
     }
 
     public int getIpCount() {
