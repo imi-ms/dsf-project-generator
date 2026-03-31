@@ -1,7 +1,7 @@
-package utils.helper;
+package de.unimuenster.imi.medic.dsf.utils.helper;
 
-import shared.IpConfigDTO;
 
+import de.unimuenster.imi.medic.dsf.shared.IpConfigDTO;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.*;

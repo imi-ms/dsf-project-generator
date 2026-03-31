@@ -1,9 +1,9 @@
-package utils.generator;
+package de.unimuenster.imi.medic.dsf.utils.generator;
 
-import shared.DsfOrganizationDTO;
-import shared.DsfProjectDTO;
-import utils.generator.base.AbstractGenerator;
-import utils.helper.PasswordGeneratorHelper;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
+import de.unimuenster.imi.medic.dsf.utils.helper.PasswordGeneratorHelper;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

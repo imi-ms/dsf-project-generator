@@ -1,8 +1,8 @@
-package utils.generator;
+package de.unimuenster.imi.medic.dsf.utils.generator;
 
 import java.util.HashMap;
-import shared.DsfProjectDTO;
-import utils.generator.base.AbstractGenerator;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
 
 
 public class PomGenerator extends AbstractGenerator {

@@ -1,4 +1,4 @@
-package shared;
+package de.unimuenster.imi.medic.dsf.shared;
 
 import java.util.List;
 import java.util.UUID;

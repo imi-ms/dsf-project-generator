@@ -1,7 +1,7 @@
-package utils.generator;
+package de.unimuenster.imi.medic.dsf.utils.generator;
 
-import shared.DsfProjectDTO;
-import utils.generator.base.AbstractGenerator;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
 
 import java.util.*;
 

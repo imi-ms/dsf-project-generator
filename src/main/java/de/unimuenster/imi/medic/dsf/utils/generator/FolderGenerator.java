@@ -1,8 +1,9 @@
-package utils.generator;
+package de.unimuenster.imi.medic.dsf.utils.generator;
 
-import shared.DsfOrganizationDTO;
-import shared.DsfProjectDTO;
-import utils.generator.base.AbstractGenerator;
+import de.unimuenster.imi.medic.dsf.shared.DsfOrganizationDTO;
+import de.unimuenster.imi.medic.dsf.shared.DsfProjectDTO;
+import de.unimuenster.imi.medic.dsf.utils.generator.base.AbstractGenerator;
+
 
 import java.io.File;
 import java.util.List;
@@ -13,13 +14,17 @@ public class FolderGenerator extends AbstractGenerator {
         super();
     }
 
+    @Override
     public boolean generate(DsfProjectDTO dsfProjectDTO) {
         try {
             // 1.) Create project directory - if not exists, else delete
             File projectFolder = new File(dsfProjectDTO.getOutputPath());
+
             this.deleteDirectory(projectFolder);
 
             if (!projectFolder.mkdirs()) return false;
+
+            projectFolder.mkdirs();
 
             // 2.) Create main directories
             // 2.1) Create browser-certs
