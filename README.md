@@ -21,5 +21,15 @@ To compile and run the project:
 
 The DSF Process Tutorial [Prerequesites](https://github.com/datasharingframework/dsf-process-tutorial/blob/main/exercises/prerequisites.md) and [Exercise 0](https://github.com/datasharingframework/dsf-process-tutorial/blob/main/exercises/exercise-0.md) can be used as a starting point, if you are not familiar with the DSF.
 
+### Linux
+
+It could be, that some created folders need special write permissions.
+This is true for the keycloak db under `./dev-setup/keycloak/data/h2` so give it write permissions
+like so: 
+
+```bash
+sudo chmod 777 ./dev-setup/keycloak/data/h2
+```
+
 ## License
 All code is published under the [Apache-2.0 License](LICENSE).
