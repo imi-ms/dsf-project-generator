@@ -61,7 +61,7 @@ public class App extends Application {
     }
 
     private void drawStartDialog(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/main.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("DSF Project Generator");
@@ -247,7 +247,7 @@ public class App extends Application {
     }
 
     private void setSuccessToStage() throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/Success.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/ui/success.fxml")));
         scene = new Scene(root);
         stage.setScene(scene);
     }
