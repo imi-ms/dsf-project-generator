@@ -53,7 +53,7 @@ public class DsfProjectDTO {
     }
 
     public String getOutputPath() {
-        return outputPath;
+        return outputPath + "/" + this.getProjectNameDash();
     }
 
     public void setOutputPath(String outputPath) {

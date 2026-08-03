@@ -20,7 +20,8 @@ public class FolderGenerator extends AbstractGenerator {
 
             this.deleteDirectory(projectFolder);
 
-            if (!projectFolder.mkdirs()) return false;
+            if (!projectFolder.exists())
+                if (!projectFolder.mkdirs()) return false;
 
             // 2.) Create main directories
             // 2.1) Create browser-certs
